@@ -16,7 +16,7 @@ public class UploadHandlers : IHttpHandler {
     }
     private void SaveFile()
     {
-        string basePath = "./File/";
+        string basePath = "/File/";
         string name;
         basePath = System.Web.HttpContext.Current.Server.MapPath(basePath);
         HttpFileCollection files = System.Web.HttpContext.Current.Request.Files;

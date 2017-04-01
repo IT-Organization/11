@@ -44,7 +44,7 @@ public partial class NewsFile_NewsEditor : System.Web.UI.Page
                                                    //  person.IsDel = false;//是否删除
 
                 if (db.SaveChanges() == 1)
-                    Response.Write("<script>alert('编辑成功');location='/NewsFile/News.aspx'</script>");
+                    Response.Write("<script>alert('编辑成功');location='NewsEditor.aspx?id="+id+"'</script>");
                 else
                     Response.Write("<script>alert('编辑失败请重试')</script>");
             }

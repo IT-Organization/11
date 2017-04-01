@@ -12,7 +12,7 @@
     <script src="/webUploader/jquery-1.7.1.min.js"></script>
     <link href="/webUploader/webuploader.css" rel="stylesheet" />
     <script src="/webUploader/webuploader.nolog.js"></script>
-    <script src="/fileUpload.js"></script>
+    <script src="/webUploader/fileUpload.js"></script>
    <style type="text/css">
         div{
             width:100%;

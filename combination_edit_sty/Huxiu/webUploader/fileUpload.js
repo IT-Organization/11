@@ -18,10 +18,10 @@ thumbnailHeight = 100 * ratio,
         resize: false,
 
         // swf文件路径
-        swf: 'webUploader/Uploader.swf',
+        swf: '/webUploader/Uploader.swf',
 
         // 文件接收服务端。
-        server: '../UploadHandlers.ashx',
+        server: '/webUploader/UploadHandlers.ashx',
         fileNumLimit: 1,
 
         // 选择文件的按钮。可选。

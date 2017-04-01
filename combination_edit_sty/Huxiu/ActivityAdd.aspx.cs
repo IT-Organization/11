@@ -57,7 +57,7 @@ public partial class ActivityFile_ActivityAdd : System.Web.UI.Page
                 db.Activity.Add(person);
 
                 if (db.SaveChanges() == 1)
-                    Response.Write("<script>alert('添加成功');location='/ActivityFile/Activities.aspx'</script>");
+                    Response.Write("<script>alert('添加成功');location='ActivityList.aspx'</script>");
                 else
                     Response.Write("<script>alert('添加失败请重试')</script>");
             }

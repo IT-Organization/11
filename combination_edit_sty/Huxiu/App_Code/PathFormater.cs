@@ -32,7 +32,8 @@ public static class PathFormatter
             {
                 digit = Convert.ToInt32(match.Groups[2].Value);
             }
-            var rand = new Random();
+            //var rand = new Random();
+            var rand = new Random(UeditorHelper.GetRandomSeed());//防止图片命名格式化时，随机数出现重复，导致已上传的图片被下一个图片覆盖掉
             return rand.Next((int)Math.Pow(10, digit), (int)Math.Pow(10, digit + 1)).ToString();
         }));
 
