@@ -1,3 +1,0 @@
-﻿test merge branch by shell
-use git bash lalala
-
