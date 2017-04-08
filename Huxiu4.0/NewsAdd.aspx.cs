@@ -10,7 +10,7 @@ public partial class NewsFile_NewsAdd : System.Web.UI.Page
     protected void Page_Load(object sender, EventArgs e)
     {
         if (Session["AdminID"] == null)
-            Response.Write("<script>alert('账户过期请重新登录！');location='login.aspx'</script>");
+                        Response.Write("<script>alert('账户过期请重新登录！');window.parent.location.href='login.aspx';</script>");
 
     }
 

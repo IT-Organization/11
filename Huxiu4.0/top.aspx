@@ -15,7 +15,8 @@
 		</div>
 		<div class="login">
 			<div class="selection">
-                <a href='<%=url %>'><%=name %></a>
+            
+                <a href="#" ><%=name %></a>
 				<asp:LinkButton ID="Logout" runat="server" Text ="退出系统"  OnClick="Logout_Click"></asp:LinkButton>
 				
 			</div>

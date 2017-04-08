@@ -35,7 +35,8 @@
 				<h1>管理员</h1>
 				<ul id="hide02">
 					<li id="deletee"><a href="#">最近删除</a></li>
-					<li id="correct"><a href="#">信息修改</a></li>
+					<li id="correct"><a href="#">管理员信息</a></li>
+                    <li id="addAdmin"><a href="#">添加管理员</a></li>
 				</ul>
 			</li>
 		</ul>
@@ -156,6 +157,7 @@ var short = document.getElementById("short");//短趣
 var activity = document.getElementById("activity");//活动
 var deletee = document.getElementById("deletee");//最近删除
 var correct = document.getElementById("correct");//信息修改
+var addAdmin = document.getElementById("addAdmin");//添加管理员
 var addinfo = document.getElementById("addinfo");//添加资讯
 var addinter = document.getElementById("addinter");//添加短趣
 var addact = document.getElementById("addact");//添加活动
@@ -170,7 +172,8 @@ information.onclick=function(){iframe.src="PassageList.aspx";}
 short.onclick=function(){iframe.src="NewsList.aspx";}
 activity.onclick=function(){iframe.src="ActivityList.aspx";}
 deletee.onclick=function(){iframe.src="Recovery.aspx";}
-correct.onclick=function(){iframe.src="AdminInfo.aspx";}
+correct.onclick = function () { iframe.src = "tempJump.aspx"; }
+addAdmin.onclick = function () { iframe.src = "Register.aspx"; }
 addinfo.onclick=function(){iframe.src="PassageAdd.aspx";}
 addinter.onclick=function(){iframe.src="NewsAdd.aspx";}
 addact.onclick=function(){iframe.src="ActivityAdd.aspx";}

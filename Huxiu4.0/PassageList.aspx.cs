@@ -51,8 +51,8 @@ public partial class PassageList : System.Web.UI.Page //同名1
                 }
             }
             else
-                Response.Write("<script>alert('账户过期请重新登录！');location='login.aspx'</script>");
-           
+            Response.Write("<script>alert('账户过期请重新登录！');window.parent.location.href='login.aspx';</script>");
+
 
         }
     }

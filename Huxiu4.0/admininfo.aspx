@@ -38,7 +38,7 @@
         <h3>再次确认：<asp:TextBox ID="txtRptPwd" runat ="server"  MaxLength="16" TextMode="Password"></asp:TextBox></h3>
         </div>
 
-        <h3>密保问题:<asp:TextBox ID="txtProProtect" runat ="server" MaxLength="18" ReadOnly="true"></asp:TextBox></h3>
+        <h3>密保问题:<asp:TextBox ID="txtProProtect" runat ="server" MaxLength="18" ReadOnly="true" ></asp:TextBox></h3>
         <h3>密保答案:<asp:TextBox ID="txtProAnswer" runat ="server" MaxLength="18" ReadOnly="true"></asp:TextBox></h3>
         <h3><asp:Button ID="btnEdit" runat ="server" Text="编辑信息"  OnClick="btnEdit_Click"/></h3>
         <h3><asp:Button ID="btnSubmit" runat ="server" Text="提交修改" Visible="false" OnClick="btnSubmit_Click" /></h3>

@@ -13,7 +13,7 @@ public partial class PassageEditor : System.Web.UI.Page
 
         Regex r = new Regex("^[1-9]d*|0$");
         if (Session["AdminID"] == null)
-            Response.Write("<script>alert('账户过期请重新登录！');location='login.aspx'</script>");
+                        Response.Write("<script>alert('账户过期请重新登录！');window.parent.location.href='login.aspx';</script>");
 
         else if (!IsPostBack)
         {

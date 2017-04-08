@@ -8,7 +8,6 @@ using System.Web.UI.WebControls;
 public partial class backstage_top : System.Web.UI.Page
 {
     protected string name;          // = "大栗子";
-    protected string url;           //= "http://www.baidu.com";
     protected string imgUrl;        //= "./images/icon-eg.jpeg";
     protected void Page_Load(object sender, EventArgs e)
     {
@@ -17,7 +16,7 @@ public partial class backstage_top : System.Web.UI.Page
 
   
         if (Session["AdminID"] == null)
-            Response.Write("<script>alert('账户过期请重新登录！');location='login.aspx'</script>");
+            Response.Write("<script>alert('账户过期请重新登录！');window.parent.location.href='login.aspx';</script>");
 
         else if (!IsPostBack)
         {
@@ -30,7 +29,6 @@ public partial class backstage_top : System.Web.UI.Page
                 {
                     Admin ad = db.Admin.SingleOrDefault(a => a.AdminId == adId);
                     name = ad.AdminName;
-                    url = "admininfo.aspx?id=" + adId;
                     imgUrl = ad.AdminImage;
                 }
             }
@@ -48,7 +46,8 @@ public partial class backstage_top : System.Web.UI.Page
     protected void Logout_Click(object sender, EventArgs e)
     {
         Session["AdminID"] = null;
-        Response.Write("<script>alert('登出成功！跳转到虎嗅首页！');window.opener=null;window.open('','_self');window.close();</script>");
-        //ClientScript.RegisterStartupScript(Page.GetType(), "", "<script language=javascript>window.opener=null;window.open('','_self');window.close();</script>");
+        
+        Response.Write("<script>alert('登出成功！跳转到虎嗅首页！');window.parent.location.href='login.aspx';</script>");
+
     }
 }
