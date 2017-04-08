@@ -254,7 +254,7 @@ public class HeadlineHelper
 
             }
         }
-        catch (Exception ex)
+        catch
         {
             
             return false;

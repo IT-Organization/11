@@ -81,7 +81,7 @@ public partial class ActivityEditor : System.Web.UI.Page
                 person.ActivityTips = tips.Text;
 
                 if (db.SaveChanges() == 1)
-                    Response.Write("<script>alert('编辑成功');location='/ActivityFile/Activities.aspx'</script>");
+                    Response.Write("<script>alert('编辑成功');location='ActivityEditor.aspx?id="+id+"'</script>");
                 else
                     Response.Write("<script>alert('编辑失败请重试')</script>");
             }

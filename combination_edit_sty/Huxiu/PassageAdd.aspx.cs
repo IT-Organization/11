@@ -58,9 +58,10 @@ public partial class PassageAdd : System.Web.UI.Page
                     IsDel = false
                 };
                 db.Passage.Add(passage);
+                
                 if (db.SaveChanges() == 1)
                 {
-                    Response.Write("<script>alert('添加成功');location='/AuthorFile/Author.aspx'</script>");
+                    Response.Write("<script>alert('添加成功');location='PassageList.aspx'</script>");
                 }
                 else
                     Response.Write("<script>alert('添加失败请重试')</script>");

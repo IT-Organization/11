@@ -46,7 +46,7 @@ public partial class AuthorFile_AuthorEditor : System.Web.UI.Page
                 person.AuthorImage = "~/File/" + Request.Form["lb"];
 
             if (db.SaveChanges() == 1)
-                Response.Write("<script>alert('编辑成功');location='/AuthorFile/Author.aspx'</script>");
+                Response.Write("<script>alert('编辑成功');location='AuthorEditor.aspx?id="+id+"'</script>");
             else
                 Response.Write("<script>alert('编辑失败请重试')</script>");
         }

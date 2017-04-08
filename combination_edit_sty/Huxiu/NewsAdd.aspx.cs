@@ -30,7 +30,7 @@ public partial class NewsFile_NewsAdd : System.Web.UI.Page
                 db.News.Add(person);
 
                 if (db.SaveChanges() == 1)
-                    Response.Write("<script>alert('添加成功');location='/NewsFile/Newss.aspx'</script>");
+                    Response.Write("<script>alert('添加成功');location='NewsList.aspx'</script>");
                 else
                     Response.Write("<script>alert('添加失败请重试')</script>");
             }

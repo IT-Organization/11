@@ -27,7 +27,7 @@ public partial class AuthorFile_AuthorAdd : System.Web.UI.Page
             };
             db.Author.Add(person);
             if (db.SaveChanges() == 1)
-                Response.Write("<script>alert('添加作者成功');location='Authors.aspx'</script>");
+                Response.Write("<script>alert('添加作者成功');location='AuthorList.aspx'</script>");
             else
                 Response.Write("<script>alert('添加失败请重试')</script>");
         }

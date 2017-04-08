@@ -5,7 +5,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-public partial class admininfo : System.Web.UI.Page
+public partial class Admininfo : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
@@ -34,7 +34,7 @@ public partial class admininfo : System.Web.UI.Page
                 Admin ad = db.Admin.SingleOrDefault(a=>a.AdminId==ID);
                 if (ad == null)
                     return false;
-                //头像路径
+                image.ImageUrl = ad.AdminImage;//头像
                 lblName.Text = ad.AdminName;
                 lblSex.Text = ad.AdminSex ? "男" : "女";
                 txtProProtect.Text = ad.AdminProblem;
@@ -66,7 +66,7 @@ public partial class admininfo : System.Web.UI.Page
                     {
                         Admin ad = db.Admin.SingleOrDefault(a => a.AdminId == ID);
                         ad.AdminPassword = Security.SHA1_Hash(Security.MD5_hash(txtPwd.Text.Trim()));
-                        //ad.AdminImage
+                        ad.AdminImage = "~/File" + Request.Form["lb"];
                         ad.AdminProblem = txtProProtect.Text.Trim();
                         ad.AdminAnswer = txtProAnswer.Text.Trim();
                         db.SaveChanges();

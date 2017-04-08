@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="AdminInfo.aspx.cs" Inherits="admininfo" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="Admininfo.aspx.cs" Inherits="Admininfo" %>
 
 <!DOCTYPE html>
 
@@ -6,15 +6,27 @@
 <head runat="server">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <title></title>
+    <script src="/webUploader/jquery-1.7.1.min.js"></script>
+    <link href="/webUploader/webuploader.css" rel="stylesheet" />
+    <script src="/webUploader/webuploader.nolog.js"></script>
+    <script src="/webUploader/fileUpload.js"></script>
 </head>
 <body>
     <form id="form1" runat="server">
     <div>
     <h1>管理员信息</h1>
 
+        头像：<asp:Image runat="server" ID="image" Height="100" Width="100" />
 
-        <div  id="divImgHead">
-            <!-- 添加头像控件-->
+        <div id="uploader" runat="server" class="wu-example">
+        <!--用来存放文件信息-->
+        <div id="thelist" class="uploader-list"></div>        
+        <div class="btns">
+        <div id="picker">选择图片</div>
+        <div id="ctlBtn" class="webuploader-pick" onmouseover="mouseO();" onmouseout="mouseOt();" >开始上传</div>
+        </div>
+            <%--用来存图片名--%>
+        <input id="lb" type="hidden" runat="server" />
         </div>
 
 

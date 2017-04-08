@@ -75,7 +75,7 @@ public partial class PassageEditor : System.Web.UI.Page
 
                 if (db.SaveChanges() == 1)
                 {
-                    Response.Write("<script>alert('编辑成功');location='/PassageFile/Passages.aspx'</script>");
+                    Response.Write("<script>alert('编辑成功');location='PassageEditor.aspx?id="+id+"'</script>");
                 }
                 else
                     Response.Write("<script>alert('编辑失败请重试')</script>");
