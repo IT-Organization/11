@@ -9,7 +9,10 @@ public partial class AuthorList : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-        if (!IsPostBack)
+        if (Session["AdminID"] == null)
+            Response.Write("<script>alert('账户过期请重新登录！');location='login.aspx'</script>");
+
+        else if (!IsPostBack)
         {
             using (var db = new huxiuEntities())
             {
@@ -27,6 +30,17 @@ public partial class AuthorList : System.Web.UI.Page
     protected void Rpt_ItemCommand(object source, RepeaterCommandEventArgs e)
     {
 
+        if (e.CommandName== "delete")
+        {
+            int authorId  = Convert.ToInt32(e.CommandArgument);
+            using (var db=new huxiuEntities())
+            {
+                Author au = db.Author.SingleOrDefault(a => a.AuthorId == authorId);
+                db.Author.Remove(au);
+                db.SaveChanges();
+                Response.Write("<script>alert('作者删除成功！');location='AuthorList.aspx';</script>");
+            }
+        }
     }
 
     protected void btnSearch_Click(object sender, EventArgs e)

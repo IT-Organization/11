@@ -65,7 +65,7 @@ form{
 <form id="form1" runat="server">
 
     
-<div id="container">
+<!--<div id="container">-->
 	<div title="SetCategory">
        <!--添加分类框，默认资讯-->
         分类：
@@ -103,7 +103,7 @@ form{
 				        <td><asp:LinkButton ID="lbTitle" runat ="server" Text ='<%# Eval("Title") %>'  CommandName="jumpPage" CommandArgument='<%# Eval("Id")+","+Eval("Link") %>'></asp:LinkButton> ></td>
 				        <td><%#Eval("Time")%></td>
 				        <td><asp:LinkButton ID="lbAdmin" runat="server" Text ='<%#Eval("AdminName")%>'  CommandName="jumpAdmin" CommandArgument='<%# Eval("AdminId ") %>' ></asp:LinkButton></td>
-				        <td><asp:LinkButton ID="lbDelete" runat="server" Text="恢复" OnClientClick="return confirm('请问确定要恢复这篇文章吗？')" CommandName="recover" CommandArgument='<%#Eval("Id")+","+Eval("PassageCate") %>'></asp:LinkButton></td>
+				        <td><asp:LinkButton ID="lbDelete" runat="server" Text="恢复" OnClientClick="return confirm('请问确定要恢复这篇文章吗？')" CommandName="recover" CommandArgument='<%#Eval("Id")+","+Eval("DelCate") %>'></asp:LinkButton></td>
 				        
 			        </tr>	
                 </ItemTemplate>
@@ -127,7 +127,7 @@ form{
 
 
 
-</div>	
+<!--</div>	-->
     </form>
 </body>
 </html>

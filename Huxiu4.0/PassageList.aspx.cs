@@ -10,54 +10,64 @@ public partial class PassageList : System.Web.UI.Page //同名1
 {
     protected void Page_Load(object sender, EventArgs e)
     {
+
+
         if (!IsPostBack)
         {
-            using (var db = new huxiuEntities())
+            if (Session["AdminID"] != null)
             {
-                var datascore = from it in db.PassageInformation where it.IsDel == false orderby it.PublishDate descending select it;
 
-                var ds = datascore.ToList();
+                using (var db = new huxiuEntities())
+                {
+                    var datascore = from it in db.PassageInformation where it.IsDel == false orderby it.PublishDate descending select it;
 
-                Session["ds"] = ds;
+                    var ds = datascore.ToList();
 
-                DataBindToRepeater(1, ds);
+                    Session["ds"] = ds;
+
+                    DataBindToRepeater(1, ds);
+                }
+
+                using (var db = new huxiuEntities())
+                {
+                    var datascore = from it in db.PassageCategory select it;
+
+                    this.DropDownList.DataSource = datascore.ToList();
+
+                    this.DropDownList.DataValueField = "PCategoryId";
+
+                    this.DropDownList.DataTextField = "CategoryName";
+
+                    this.DropDownList.DataBind();
+
+                    ListItem item = new ListItem();
+
+                    item.Text = "全部";
+
+                    item.Value = "0";
+
+                    this.DropDownList.Items.Insert(0, item);
+
+                }
             }
+            else
+                Response.Write("<script>alert('账户过期请重新登录！');location='login.aspx'</script>");
+           
 
-            using (var db = new huxiuEntities())
-            {
-                var datascore = from it in db.PassageCategory select it;
-
-                this.DropDownList.DataSource = datascore.ToList();
-
-                this.DropDownList.DataValueField = "PCategoryId";
-
-                this.DropDownList.DataTextField = "CategoryName";
-
-                this.DropDownList.DataBind();
-
-                ListItem item = new ListItem();
-
-                item.Text = "全部";
-
-                item.Value = "0";
-
-                this.DropDownList.Items.Insert(0, item);
-
-            }
-        }           
+        }
     }
 
     protected void Rpt_ItemCommand(object source, RepeaterCommandEventArgs e)
     {
         int activeId = Convert.ToInt32(e.CommandArgument);
         int adminId = Convert.ToInt32(Session["AdminID"].ToString());
-        DelHelper delc = new DelHelper(2, activeId, adminId);
+        DelHelper delc = new DelHelper(1, activeId, adminId);
         if (e.CommandName == "delete")
         {
             if (delc.delItem())
-                Response.Write("<script>alert('删除成功，并且保存在最近删除中！');window.location.reload();</script>");
+                Response.Write("<script>alert('删除成功，并且保存在最近删除中！');window.location.href='PassageList.aspx';</script>");
             else
-                Response.Write("<script>alert('删除失败，请重试！');window.location.reload();</script>");
+                Response.Write("<script>alert('删除失败，请重试！');window.location.href='PassageList.aspx';</script>");
 
         }
 

@@ -11,8 +11,10 @@ public partial class NewsFile_NewsEditor : System.Web.UI.Page
     protected void Page_Load(object sender, EventArgs e)
     {
         Regex r = new Regex("^[1-9]d*|0$");
+        if (Session["AdminID"] == null)
+            Response.Write("<script>alert('账户过期请重新登录！');location='login.aspx'</script>");
 
-        if (!IsPostBack)
+        else if (!IsPostBack)
         {
             if (Request.QueryString["id"] != null && r.IsMatch(Request.QueryString["id"]))//要把是否为空放前面
             {
@@ -36,10 +38,9 @@ public partial class NewsFile_NewsEditor : System.Web.UI.Page
                 }
 
             }
-            else
-                Response.Write("<script>alert('地址栏有误');location='/NewsList.aspx'</script>");
         }
-        
+        else
+            Response.Write("<script>alert('地址栏有误');location='/NewsList.aspx'</script>");
     }
     
     protected void btnEditor_Click(object sender, EventArgs e)

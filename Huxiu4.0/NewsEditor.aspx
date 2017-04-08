@@ -27,17 +27,10 @@
         <br />
         内容：
                 <br />
-       <textarea id="editor" runat="server" type="text/plain" style="width: 1024px; height: 500px;"></textarea>
-            <script type="text/javascript">
-                var CheckF = $('#ChangeFlag').val();
-
-                var ue = UE.getEditor('<%=editor.ClientID %>');
-                ue.addListener('ready', function () {
-                    if (CheckF != '1') {
-                        ue.setDisabled();
-                    }
-                });       
-            </script>
+       <textarea id="editor" runat="server" type="text/plain"  style="width:701px; height:318px;" ></textarea>
+        <script type="text/javascript">
+            var ue = UE.getEditor('<%=editor.ClientID %>');
+        </script>
         <input id="ChangeFlag" runat="server" type="hidden" />
 
         <br />

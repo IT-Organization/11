@@ -22,6 +22,13 @@ public partial class headline : System.Web.UI.Page
     HeadlineHelper hp = new HeadlineHelper();
     protected void Page_Load(object sender, EventArgs e)
     {
+        if (Session["AdminID"] == null)
+            Response.Write("<script>alert('账户过期请重新登录！');location='login.aspx'</script>");
+
+        else
+        {
+
+        
         divAddRecord.Visible = false;
         divEditRecord.Visible = false;
         lblCanAdd.Text = "剩余空位:" + (hp.getThreshold() - hp.getDisplayCount()).ToString();
@@ -39,7 +46,7 @@ public partial class headline : System.Web.UI.Page
             //载入失败去404页
             Response.Write(ex);
         }
-
+        }
     }
     
 
@@ -79,7 +86,7 @@ public partial class headline : System.Web.UI.Page
                 }
                 else
                 {
-                    Response.Write("<script>alert('请检查日期的正确性！')</script>");
+                    Response.Write("<script>alert('请检查日期的正确性！以 “/ . -” 分割')</script>");
                     return;
                 }
             }

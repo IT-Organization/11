@@ -44,7 +44,7 @@ public class regist : IHttpHandler,IReadOnlySessionState
                         adminTable.AdminSex = (sex == "男") ? true : false;
                         adminTable.AdminProblem = protectProblem;
                         adminTable.AdminAnswer = protectAnswer;
-                        adminTable.AdminImage = "imgUrl";
+                        adminTable.AdminImage = "./images/icon-eg.jpeg";
                         //将数据添加到 admin 表中
                         db.Admin.Add(adminTable);
                         //保存更改

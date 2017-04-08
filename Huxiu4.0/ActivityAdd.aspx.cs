@@ -9,10 +9,10 @@ public partial class ActivityFile_ActivityAdd : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-        if (!IsPostBack)
-        {
-            
-        }
+        if (Session["AdminID"] == null)
+            Response.Write("<script>alert('账户过期请重新登录！');location='login.aspx'</script>");
+
+
     }
 
     /// 日期选择图标被点击

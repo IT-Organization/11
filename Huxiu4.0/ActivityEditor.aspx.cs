@@ -12,8 +12,10 @@ public partial class ActivityEditor : System.Web.UI.Page
     {
         
         Regex r = new Regex("^[1-9]d*|0$");
+        if (Session["AdminID"] == null)
+            Response.Write("<script>alert('账户过期请重新登录！');location='login.aspx'</script>");
 
-        if (!IsPostBack)
+        else if (!IsPostBack)
         {
             if ( Request.QueryString["id"] != null&&r.IsMatch(Request.QueryString["id"]) )//要把是否为空放前面
             {

@@ -9,7 +9,10 @@ public partial class ActivityList : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-        if(!IsPostBack)
+        if (Session["AdminID"] == null)
+            Response.Write("<script>alert('账户过期请重新登录！');location='login.aspx'</script>");
+
+        else if (!IsPostBack)
         {
             using (var db = new huxiuEntities())
             {
@@ -33,9 +36,9 @@ public partial class ActivityList : System.Web.UI.Page
         if(e.CommandName== "delete")
         {
             if (delc.delItem())
-                Response.Write("<script>alert('删除成功，并且保存在最近删除中！');window.location.reload();</script>");
+                Response.Write("<script>alert('删除成功，并且保存在最近删除中！');window.location.href='ActivityList.aspx';</script>");
             else
-                Response.Write("<script>alert('删除失败，请重试！');window.location.reload();</script>");
+                Response.Write("<script>alert('删除失败，请重试！');window.location.href='ActivityList.aspx';</script>");
 
         }
     }

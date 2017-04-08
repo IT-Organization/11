@@ -273,7 +273,7 @@ function regist(validate) {
         var md5 = new MD5();
 
         var val_sex = $('#sexdiv input[name="sex"]:checked ').val();            //获取男女单选框值
-        alert(val_sex);
+        //alert(val_sex);
         if (val_sex != null)
             $.ajax({
                 url: "regist.ashx",
@@ -299,14 +299,15 @@ function regist(validate) {
                     //转化为 Json 对象
                     var dataJson = eval("(" + data + ")");
 
-                    alert(dataJson.code);
+                    //alert(dataJson.code);
                     
 
                     if (dataJson.hasOwnProperty("code")) {
                         if (dataJson.code == 200) {
                             //注册成功
-                            window.href = "www.baidu.com";
                             alert("success");
+                            window.location.href = 'huxiu-backstage.html';
+                            
                         } else if (dataJson.code == 0) {
                             //验证码有错误
                             $("#captcha").addClass("error");

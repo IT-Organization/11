@@ -9,7 +9,11 @@ public partial class PCategoryList : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-        if (!IsPostBack)
+        if (Session["AdminID"] == null)
+            Response.Write("<script>alert('账户过期请重新登录！');location='login.aspx'</script>");
+
+
+        else if (!IsPostBack)
         {
             using (var db = new huxiuEntities())
             {
@@ -26,7 +30,17 @@ public partial class PCategoryList : System.Web.UI.Page
 
     protected void Rpt_ItemCommand(object source, RepeaterCommandEventArgs e)
     {
-
+        if (e.CommandName == "delete")
+        {
+            int pcId = Convert.ToInt32(e.CommandArgument);
+            using (var db = new huxiuEntities())
+            {
+                PassageCategory pc = db.PassageCategory.SingleOrDefault(a => a.PCategoryId == pcId);
+                db.PassageCategory.Remove(pc);
+                db.SaveChanges();
+                Response.Write("<script>alert('分类删除成功！');location='PCategoryList.aspx';</script>");
+            }
+        }
     }
 
     protected void btnSearch_Click(object sender, EventArgs e)

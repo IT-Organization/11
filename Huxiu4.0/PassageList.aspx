@@ -120,7 +120,7 @@ form{
 				        <td> <asp:LinkButton ID="lbTitle" runat="server" Text='<%#Eval("PassageTitle") %>' PostBackUrl='<%# "PassageEditor.aspx?id="+ Eval("PassageId") %>'></asp:LinkButton></td>
 				        <td><%#Eval("PassageBody") %></td>
 				        <td><%#Eval("CategoryName") %></td>
-				        <td> <asp:LinkButton ID="lbName" runat="server" Text='<%#Eval("AuthorName") %>' PostBackUrl='<%# "AuthorInformation.aspx?id="+ Eval("AuthorId") %>'></asp:LinkButton></td>
+				        <td> <asp:LinkButton ID="lbName" runat="server" Text='<%#Eval("AuthorName") %>' PostBackUrl='<%# "AuthorEditor.aspx?id="+ Eval("AuthorId") %>'></asp:LinkButton></td>
                         <td><%#Eval("PublishDate") %></td>
                         <td><%#Eval("PageViews") %></td>
 				        <td><asp:LinkButton ID="lbDelete" runat="server" Text="删除" CommandName="delete" CommandArgument='<%#Eval("PassageId") %>'></asp:LinkButton></td>

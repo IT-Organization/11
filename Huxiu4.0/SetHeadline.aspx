@@ -64,8 +64,7 @@ form{
 <form id="form1" runat="server">
 
     
-<div id="container">
-    
+
    
 	
 	<div id="content">
@@ -150,7 +149,7 @@ form{
 
 
 
-</div>	
+
     </form>
 </body>
 </html>

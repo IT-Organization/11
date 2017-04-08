@@ -55,7 +55,8 @@
         <script type="text/javascript">
         var ue = UE.getEditor('<%=editor.ClientID %>');</script>
         <br />
-        <asp:Button ID="btnAdd" runat="server" Text="添加" OnClick="btnAdd_Click" /> 
+
+        <h4> <asp:Button ID="btnAdd" runat="server" Text="添加" OnClick="btnAdd_Click" /> </h4>
         <br />
         <br />
 

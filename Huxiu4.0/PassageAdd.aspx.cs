@@ -10,7 +10,10 @@ public partial class PassageAdd : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-        if (!IsPostBack)
+        if (Session["AdminID"] == null)
+            Response.Write("<script>alert('账户过期请重新登录！');location='login.aspx'</script>");
+
+        else if (!IsPostBack)
         {
             using(var db=new huxiuEntities())
             {

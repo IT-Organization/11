@@ -11,7 +11,11 @@ public partial class NewsList : System.Web.UI.Page
     public static List<News> ds;
     protected void Page_Load(object sender, EventArgs e)
     {
-        if (!IsPostBack)
+        if (Session["AdminID"] == null)
+            Response.Write("<script>alert('账户过期请重新登录！');location='login.aspx'</script>");
+
+
+        else if (!IsPostBack)
         {
             using (var db = new huxiuEntities())
             {
@@ -31,13 +35,13 @@ public partial class NewsList : System.Web.UI.Page
         
             int activeId = Convert.ToInt32(e.CommandArgument);
             int adminId = Convert.ToInt32(Session["AdminID"].ToString());
-            DelHelper delc = new DelHelper(2, activeId, adminId);
+            DelHelper delc = new DelHelper(3, activeId, adminId);
             if (e.CommandName == "delete")
             {
                 if (delc.delItem())
-                    Response.Write("<script>alert('删除成功，并且保存在最近删除中！');window.location.reload();</script>");
+                    Response.Write("<script>alert('删除成功，并且保存在最近删除中！');window.location.href='NewsList.aspx';</script>");
                 else
-                    Response.Write("<script>alert('删除失败，请重试！');window.location.reload();</script>");
+                    Response.Write("<script>alert('删除失败，请重试！');window.location.href='NewsList.aspx';</script>");
 
             }
     }

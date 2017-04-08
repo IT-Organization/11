@@ -21,6 +21,7 @@ public partial class recovery : System.Web.UI.Page
         public int AdminId { get; set; }
         public int PassageCate { get; set; }
         public string Link { get; set; }
+        public int DelCate { get; set; }
     }
 
     //初次查询即结果,用静态变量才能保存上一次在大类下的查询结果，否则刷新页面后就清空了，会出错
@@ -29,8 +30,10 @@ public partial class recovery : System.Web.UI.Page
     static protected DataTable pds_dt = new DataTable();
     protected void Page_Load(object sender, EventArgs e)
     {
+        if (Session["AdminID"] == null)
+            Response.Write("<script>alert('账户过期请重新登录！');location='login.aspx'</script>");
 
-        if (!IsPostBack)
+        else if (!IsPostBack)
         {
             //大分类显示“请选择”
             ListItem lt = new ListItem();
@@ -39,7 +42,7 @@ public partial class recovery : System.Web.UI.Page
             DplistCategory.Items.Add(lt);
 
 
-
+            //默认显示资讯的
             _DT = RptRecoverListBind("资讯");
             pds_dt = _DT.Copy();
             JumpPage(pds_dt, 1);
@@ -59,17 +62,20 @@ public partial class recovery : System.Web.UI.Page
             if (DplistCategory.SelectedValue == "资讯")
             {
                 //绑定数据
-                _DT = RptRecoverListBind(DplistCategory.SelectedValue);
+                _DT = RptRecoverListBind("资讯");
                 pds_dt = _DT.Copy();
                 JumpPage(pds_dt, 1);
                 //显示资讯下面的详细标签
                 using (var db = new huxiuEntities())
                 {
                     var DptDataSource = from it in db.DeleteLog
+                                        where it.Category==1
+                                        join disId in db.Passage                          
+                                        on it.LogId equals disId.PassageId
                                         join itOk in db.PassageCategory
-                                        on it.Category equals itOk.PCategoryId
+                                        on disId.PassageCategory equals itOk.PCategoryId
                                         select itOk.CategoryName;
-                    HashSet<string> hs = new HashSet<string>(DptDataSource);
+                    HashSet<string> hs = new HashSet<string>(DptDataSource);//去出重复字符串
 
                     DplistPassageLable.DataSource = hs.ToList();
                     DplistPassageLable.DataBind();
@@ -148,8 +154,8 @@ public partial class recovery : System.Web.UI.Page
                           on it.LogId equals disId.PassageId
                           join adminInfo in db.Admin                         //联合查询，显示管理员的名字和 Id
                           on it.DelAdminId equals adminInfo.AdminId
-                          select new MyDataInfo { Id = disId.PassageId, Title = disId.PassageTitle, PassageCate = disId.PassageCategory, Time = it.DelTime, AdminName = adminInfo.AdminName, AdminId = it.DelAdminId, Link = "#" };
-
+                          select new MyDataInfo { Id = disId.PassageId, Title = disId.PassageTitle, PassageCate = disId.PassageCategory, Time = it.DelTime, AdminName = adminInfo.AdminName, AdminId = it.DelAdminId, Link = "#",DelCate=1 };
+            
                 return transToDataTable(ans);
             }
             //结果：   活动标题（id 绑定到跳转链接）  删除时间  管理员姓名（绑定id到跳转管理员界面）
@@ -162,7 +168,7 @@ public partial class recovery : System.Web.UI.Page
                           on it.LogId equals disId.ActivityId                //联合查询，显示活动 id Title
                           join adminInfo in db.Admin
                           on it.DelAdminId equals adminInfo.AdminId          //联合查询，显示管理员的名字和 Id
-                          select new MyDataInfo { Id = disId.ActivityId, Title = disId.ActivityTitle, Time = it.DelTime, AdminName = adminInfo.AdminName, AdminId = it.DelAdminId, PassageCate = -1, Link = "#" };
+                          select new MyDataInfo { Id = disId.ActivityId, Title = disId.ActivityTitle, Time = it.DelTime, AdminName = adminInfo.AdminName, AdminId = it.DelAdminId, PassageCate = -1, Link = "#", DelCate =2 };
 
                 return transToDataTable(ans);
             }
@@ -176,7 +182,7 @@ public partial class recovery : System.Web.UI.Page
                           on it.LogId equals disId.NewsId                    //联合查询，显示短趣 id Title
                           join adminInfo in db.Admin
                           on it.DelAdminId equals adminInfo.AdminId          //联合查询，显示管理员的名字和 Id
-                          select new MyDataInfo { Id = disId.NewsId, Title = disId.NewsTitle, Link = disId.NewsLink, Time = it.DelTime, AdminName = adminInfo.AdminName, AdminId = it.DelAdminId, PassageCate = -1 };
+                          select new MyDataInfo { Id = disId.NewsId, Title = disId.NewsTitle, Link = disId.NewsLink, Time = it.DelTime, AdminName = adminInfo.AdminName, AdminId = it.DelAdminId, PassageCate = -1, DelCate =3 };
 
                 return transToDataTable(ans);
             }
@@ -192,7 +198,7 @@ public partial class recovery : System.Web.UI.Page
     protected DataTable transToDataTable(IQueryable<MyDataInfo> ans)
     {
 
-        string[] column = new string[] { "Id", "Title", "Time", "AdminName", "AdminId", "PassageCate", "Link" };
+        string[] column = new string[] { "Id", "Title", "Time", "AdminName", "AdminId", "PassageCate", "Link", "DelCate" };
         DataTable dt = new DataTable();
         //为新标建立列明
         for (int i = 0; i < column.Length; i++)
@@ -211,6 +217,7 @@ public partial class recovery : System.Web.UI.Page
             dr["AdminId"] = item.AdminId.ToString();
             dr["PassageCate"] = item.PassageCate.ToString();
             dr["Link"] = item.Link.ToString();
+            dr["DelCate"] = item.DelCate;
             dt.Rows.Add(dr);
         }
         return dt;
@@ -292,9 +299,9 @@ public partial class recovery : System.Web.UI.Page
                 string postUrl = "";
                 //说明用 id 来跳转详情页面
                 if (DplistCategory.SelectedValue=="资讯")             //跳资讯
-                postUrl = "~/PassageEditor.aspx?id=" + e.CommandArgument.ToString().Trim();
+                postUrl = "/PassageEditor.aspx?id=" + e.CommandArgument.ToString().Trim();
                 else                                                //跳活动
-                    postUrl = "~/ActivityEditor.aspx?id=" + e.CommandArgument.ToString().Trim();
+                    postUrl = "/ActivityEditor.aspx?id=" + e.CommandArgument.ToString().Trim();
 
                 Response.Write("<script>window.open('" + postUrl + "','_blank')</script>");
 
@@ -312,8 +319,8 @@ public partial class recovery : System.Web.UI.Page
         {
             //打开管理员信息的窗口---弹窗形式
             string ID = e.CommandArgument.ToString();
-            string link = "~/AdminInfo?id="+ID;
-            Response.Write("<script language='javascript'>window.open('" + link + "', 'newwindow', 'height=200, width=300, top='+Math.round((window.screen.height-200)/2)+',left='+Math.round((window.screen.width-300)/2)+', toolbar=no,menubar = no, scrollbars = no, resizable = no, location = no, status = no')</script>");
+            string link = "/AdminInfo.aspx?id="+ID;
+            Response.Write("<script language='javascript'>window.open('" + link + "', 'newwindow', 'height=600, width=300, top='+Math.round((window.screen.height-200)/2)+',left='+Math.round((window.screen.width-300)/2)+', toolbar=no,menubar = no, scrollbars = no, resizable = no, location = no, status = no')</script>");
         }
         else if (e.CommandName == "recover")
         {
@@ -322,7 +329,7 @@ public partial class recovery : System.Web.UI.Page
             int category = Convert.ToInt32(argv[1]);
             //调用 DelHelper 类
             DelHelper delOp = new DelHelper(category, id);
-            delOp.recoverDel();
+            delOp.recoverDel(); 
             //刷新表格
             _DT = RptRecoverListBind(DplistCategory.SelectedValue);
             pds_dt = _DT.Copy();

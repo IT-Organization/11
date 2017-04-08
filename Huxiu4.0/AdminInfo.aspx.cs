@@ -9,6 +9,11 @@ public partial class Admininfo : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
+        if (Session["AdminID"] == null)
+            Response.Write("<script>alert('账户过期请重新登录！');location='login.aspx'</script>");
+
+        else
+        {
 
         divPwd.Visible = false;
         txtProProtect.ReadOnly = true;
@@ -21,6 +26,8 @@ public partial class Admininfo : System.Web.UI.Page
         {
             Response.Write("<script>window.location.reload();</script>");
             return;
+        }
+
         }
 
 
