@@ -33,8 +33,8 @@
 <div class="dataEye">
 	<div class="loginbox registbox">
 		<div class="logo-a">
-			<a href="#" title="js代码网">
-				<img src="resources/images/logo-a.png">
+			<a href="#" title="虎嗅网">
+				<img src="/images/logo.jpg" height ="100" width="160">
 			</a>
 		</div>
         
@@ -95,11 +95,9 @@
 			</div>
 			</form>
 		</div>
-		<div class="go-regist">
-			已有帐号,请<a href="#" class="link">登录</a>
-		</div>
+		
 	</div>
-	
+	<!--
 <div id="footer">
 	<div class="dblock">
 		<div class="inline-block"><img src="resources/images/logo-gray.png"></div>
@@ -109,6 +107,9 @@
 		</div>
 	</div>
 </div>
+
+        -->
+
 </div>
 <div class="loading">
 	<div class="mask">
