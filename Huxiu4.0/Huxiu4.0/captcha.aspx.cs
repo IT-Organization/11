@@ -73,7 +73,7 @@ public partial class captcha : System.Web.UI.Page
             }
             //设置背景字体样式,刷子样式
             Font font = new System.Drawing.Font("Arial", 12, (System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic));
-            System.Drawing.Drawing2D.LinearGradientBrush brush = new System.Drawing.Drawing2D.LinearGradientBrush(new Rectangle(0, 0, img.Width, img.Height), Color.Blue, Color.DarkRed, 1.2f, true);
+            System.Drawing.Drawing2D.LinearGradientBrush brush = new System.Drawing.Drawing2D.LinearGradientBrush(new Rectangle(0, 0, img.Width, img.Height), Color.FromArgb(8,14,26), Color.DarkRed, 1.2f, true);
             g.DrawString(validateNum, font, brush, 2, 2);
 
             //画图片的前噪音点

@@ -1,3 +1,4 @@
+/// <reference path="login.js" />
 $(function(){
 	$(".username").focus(function(){
 		$(".username-tip p").css({
@@ -77,7 +78,6 @@ $(function(){
 		});
 		if($(this).val()=="")
 			$(this).val("password").attr("type","text");
-        
             /*
 		else {
 			var passin=$.trim($(this).val());
@@ -103,10 +103,20 @@ $(function(){
         	});
     slider.init();*/
     $(".indentifying-code input").focus(function(){
-    	$(this).css({"background":"url(images/yanzheng.png)"});
+        $(this).css({
+            "background":"url(images/yanzheng.png)",
+            "color":"white"
+        });
+        if(this.value=="captcha")
+            $(this).val("");
     })
     $(".indentifying-code input").blur(function(){
-    	$(this).css({"background":"url(images/yanzheng1.png)"});
+        $(this).css({
+            "background":"url(images/yanzheng1.png)",
+            "color":"#999"
+        });
+        if($(this).val()=="")
+            $(this).val("captcha");
     })
 
     /*

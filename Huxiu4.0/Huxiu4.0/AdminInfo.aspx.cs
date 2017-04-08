@@ -14,7 +14,7 @@ public partial class Admininfo : System.Web.UI.Page
 
         else if(!IsPostBack)
         {
-
+            uploader.Visible = false;
         divPwd.Visible = false;
         txtProProtect.ReadOnly = true;
         txtProAnswer.ReadOnly = true;
@@ -56,48 +56,7 @@ public partial class Admininfo : System.Web.UI.Page
 
     protected void btnSubmit_Click(object sender, EventArgs e)
     {
-        /*
-        // Request.Form["lb"].Trim().Length > 0
-        // SEESION 获取 ID
-        int ID =Convert.ToInt32( Session["AdminID"].ToString());
-        if(!((txtPwd.Text!="" && txtRptPwd.Text!="") || (txtProProtect.Text!="" && txtProAnswer.Text!="") || Request.Form["lb"].Trim().Length > 0))
-
-            Response.Write("<script>alert('请输入合法数据!')</script>");
-        //  if (txtProAnswer.Text.Trim()=="" || txtProProtect.Text.Trim()=="" || txtPwd.Text.Trim() =="" || txtRptPwd.Text.Trim()=="")
-        //  Response.Write("<script>alert('请输入合法数据!')</script>");
-        else
-        {
-            if (txtPwd.Text == txtRptPwd.Text)
-            {
-                //保存修改
-                try
-                {
-                    using(var db=new huxiuEntities())
-                    {
-                        Admin ad = db.Admin.SingleOrDefault(a => a.AdminId == ID);
-                        ad.AdminPassword = Security.SHA1_Hash(Security.MD5_hash(txtPwd.Text.Trim()));
-                        ad.AdminImage = "~/File" + Request.Form["lb"];
-                        ad.AdminProblem = txtProProtect.Text.Trim();
-                        ad.AdminAnswer = txtProAnswer.Text.Trim();
-                        db.SaveChanges();
-                    }
-                    Response.Write("<script>alert('修改成功!');</script>");
-
-                }
-                catch (Exception ex)
-                {
-                    Response.Write(ex);
-                }
-            }
-            else
-            {
-                Response.Write("<script>alert('两次密码不一样，请检查!')</script>");
-
-            }
-        }
-        */
-        //-----------------------------------------
-
+       
         int ID =Convert.ToInt32( Session["AdminID"].ToString());
         string headImg = Request.Form["lb"].ToString();
         string pwd = txtPwd.Text.Trim();
@@ -157,6 +116,7 @@ public partial class Admininfo : System.Web.UI.Page
 
     protected void btnEdit_Click(object sender, EventArgs e)
     {
+        uploader.Visible = true;
         divPwd.Visible =true;
         txtProProtect.ReadOnly = false;
         txtProAnswer.ReadOnly = false;

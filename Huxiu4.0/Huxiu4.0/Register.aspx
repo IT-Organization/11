@@ -34,7 +34,7 @@
 	<div class="loginbox registbox">
 		<div class="logo-a">
 			<a href="#" title="虎嗅网">
-				<img src="/images/logo.jpg" height ="100" width="160">
+				<img src="/images/logo.jpg" height ="70" width="140">
 			</a>
 		</div>
         

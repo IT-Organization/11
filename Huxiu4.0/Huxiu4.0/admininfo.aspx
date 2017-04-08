@@ -38,7 +38,7 @@
 
         头像：<asp:Image runat="server" ID="image" Height="100" Width="100" />
 
-        <div id="uploader" runat="server" class="wu-example">
+        <div id="uploader" runat="server" class="wu-example" visible="false">
         <!--用来存放文件信息-->
         <div id="thelist" class="uploader-list"></div>        
         <div class="btns">
