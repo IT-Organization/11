@@ -12,6 +12,7 @@ public partial class ActivityEditor : System.Web.UI.Page
     {
         
         Regex r = new Regex("^[1-9]d*|0$");
+
         if (!IsPostBack)
         {
             if ( Request.QueryString["id"] != null&&r.IsMatch(Request.QueryString["id"]) )//要把是否为空放前面
@@ -88,7 +89,7 @@ public partial class ActivityEditor : System.Web.UI.Page
                     person.ActivityImage = "~/File/" + Request.Form["lb"];
 
                 if (requestedDeliveryDateTextBox.Text.Trim().Length > 0)
-                    person.ActivityWhen = Convert.ToDateTime( requestedDeliveryDateTextBox.Text).ToString("yyyy-MM-dd");
+                    person.ActivityWhen = requestedDeliveryDateTextBox.Text;
 
                 person.ActivityWhere = where.Text;
 

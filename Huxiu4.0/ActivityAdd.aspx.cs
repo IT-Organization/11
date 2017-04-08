@@ -50,7 +50,7 @@ public partial class ActivityFile_ActivityAdd : System.Web.UI.Page
 
                     ActivityImage = "~/File/" + Request.Form["lb"],//活动封面
 
-                    ActivityWhen = Convert.ToDateTime( requestedDeliveryDateTextBox.Text).ToString("yyyy-MM-dd"),
+                    ActivityWhen = requestedDeliveryDateTextBox.Text,
 
                     ActivityWhere = where.Text,
 
