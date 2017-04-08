@@ -105,7 +105,7 @@ public partial class Admininfo : System.Web.UI.Page
         string proPro = txtProProtect.Text.Trim();
         string proAns = txtProAnswer.Text.Trim();
         bool isEditPwd = false;
-        if (!((txtPwd.Text != "" && txtRptPwd.Text != "") || (txtProProtect.Text != "" && txtProAnswer.Text != "") || Request.Form["lb"].Trim().Length > 0))
+        if (!((txtPwd.Text != "" && txtRptPwd.Text != "") || (txtProProtect.Text != "" && txtProAnswer.Text != "") || Request.Form["lb"].Trim().Length > 0) )
 
             Response.Write("<script>alert('请输入合法数据!')</script>");
         else
@@ -117,7 +117,7 @@ public partial class Admininfo : System.Web.UI.Page
                     Admin ad = db.Admin.SingleOrDefault(a => a.AdminId == ID);
                     if (headImg != "")
                         ad.AdminImage = "/File/" + headImg;
-                    if (pwd != "" && pwd == pwdRpt)
+                    if (pwd != "" && pwd == pwdRpt && pwd != "●●●●●●●●●●")
                     {
                         ad.AdminPassword = Security.SHA1_Hash(Security.MD5_hash(pwd));
                         isEditPwd = true;
