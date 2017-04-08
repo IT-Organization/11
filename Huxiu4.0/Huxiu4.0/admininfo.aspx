@@ -6,10 +6,30 @@
 <head runat="server">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <title></title>
-    <script src="/webUploader/jquery-1.7.1.min.js"></script>
+    <script src="Scripts/jquery-3.1.1.min.js"></script>
     <link href="/webUploader/webuploader.css" rel="stylesheet" />
     <script src="/webUploader/webuploader.nolog.js"></script>
     <script src="/webUploader/fileUpload.js"></script>
+       <script>
+           $(function () {
+
+               $(".password").focus(function () {
+                   $(".password").attr("type", "password");
+
+                   if (this.value == "●●●●●●●●●●")
+                       $(this).val("");
+               })
+               $(".password").blur(function () {
+
+                   if ($(this).val() == "")
+                       $(this).val("●●●●●●●●●●").attr("type", "password");
+
+
+               })
+
+
+           })</script>
+    
 </head>
 <body>
     <form id="form1" runat="server">
@@ -34,8 +54,10 @@
         <h3>性别：<asp:Label ID="lblSex" runat="server"></asp:Label></h3>
 
         <div id="divPwd" runat ="server" visible="false">
-        <h3>修改密码：<asp:TextBox ID="txtPwd" runat ="server"  MaxLength="16" TextMode="Password"></asp:TextBox></h3>
-        <h3>再次确认：<asp:TextBox ID="txtRptPwd" runat ="server"  MaxLength="16" TextMode="Password"></asp:TextBox></h3>
+        <h3>修改密码：<asp:TextBox ID="txtPwd" runat ="server"  CssClass="password" MaxLength="16"  Text="●●●●●●●●●●"></asp:TextBox></h3>
+        <h3>再次确认：<asp:TextBox ID="txtRptPwd" runat ="server"  MaxLength="16"  CssClass="password" Text="●●●●●●●●●●"></asp:TextBox></h3>
+     
+        
         </div>
 
         <h3>密保问题:<asp:TextBox ID="txtProProtect" runat ="server" MaxLength="18" ReadOnly="true" ></asp:TextBox></h3>
