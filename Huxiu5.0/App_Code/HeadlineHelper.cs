@@ -10,7 +10,7 @@ public class HeadlineHelper
 {
     public HeadlineHelper()
     {
-        threshold = 5;
+        threshold = 6;
         queueSize = 0;                              //记录队列大小
         displayCount = 0;                           //记录显示条数
         using (var db = new huxiuEntities())
@@ -83,7 +83,7 @@ public class HeadlineHelper
                 Headline delHead = db.Headline.SingleOrDefault(a => a.Id == id);
                 if (!delHead.HisDisplay)            //如果删除队列中的项目，队列数量减一
                     queueSize--;
-                else if (displayCount <= 2)         //最少头条保留两条
+                else if (displayCount <= 4)         //最少头条保留4条
                     return false;
                 db.Headline.Remove(delHead);
                 db.SaveChanges();

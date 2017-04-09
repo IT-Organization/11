@@ -306,7 +306,8 @@ function regist(validate) {
                         if (dataJson.code == 200) {
                             //注册成功
                             alert("success");
-                            window.location.href = 'huxiu-backstage.html';
+                            history.back();
+                            //window.location.href = '/PassageList.aspx';
                             
                         } else if (dataJson.code == 0) {
                             //验证码有错误

@@ -51,6 +51,7 @@ public class regist : IHttpHandler,IReadOnlySessionState
                         db.SaveChanges();
                     }
                     result += "200";
+                    
                 }
                 catch
                 {
@@ -66,7 +67,8 @@ public class regist : IHttpHandler,IReadOnlySessionState
             result += "0";
 
         result += "}";
-
+            //强制删除本次验证码提交，防止爆破
+            context.Session["Vnum"]="laji";
         context.Response.Write(result);
 
     }

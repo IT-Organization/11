@@ -133,7 +133,7 @@ public partial class headline : System.Web.UI.Page
                 BindData();
             }
             else
-                Response.Write("<script>alert('删除失败，请重试！（注意头条数目不能少于两条）')</script>");
+                Response.Write("<script>alert('删除失败，请重试！（注意头条数目不能少于四条）')</script>");
         }
     }
 
@@ -185,7 +185,7 @@ public partial class headline : System.Web.UI.Page
                 BindData();
             }
             else
-                Response.Write("<script>alert('上头条失败，请重试！（头条最多5条）')</script>");
+                Response.Write("<script>alert('上头条失败，请重试！（头条最多4条）')</script>");
         }else if(e.CommandName== "deleteHead")
         {
             int ID = Convert.ToInt32(e.CommandArgument);
@@ -195,7 +195,7 @@ public partial class headline : System.Web.UI.Page
                 BindData();
             }
             else
-                Response.Write("<script>alert('删除失败，请重试！（注意头条数目不能少于两条）')</script>");
+                Response.Write("<script>alert('删除失败，请重试！（注意头条数目不能少于四条）')</script>");
         }
 
     }

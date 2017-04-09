@@ -135,7 +135,10 @@ public partial class Admininfo : System.Web.UI.Page
                     db.SaveChanges();
                 }
                 if (isEditPwd)
-                    Response.Write("<script>alert('修改成功!下次登录使用新密码！');</script>");
+                {
+                    Response.Write("<script>alert('修改成功!下次登录使用新密码！');window.parent.location.reload();</script>");
+                  
+                }
                 else
                 {
                     string url = "AdminInfo.aspx?id=" + ID;
