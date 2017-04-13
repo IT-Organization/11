@@ -61,10 +61,10 @@ public partial class PassageContent : System.Web.UI.Page
 
                 }
                 else
-                    Response.Write("<script>alert('地址栏有误');location='/ActivityList.html'</script>");
+                    Response.Write("<script>alert('地址栏有误');location='/PassageList.aspx'</script>");
             }
         }
         else
-            Response.Write("<script>alert('地址栏有误');location='/ActivityList.html'</script>");
+            Response.Write("<script>alert('地址栏有误');location='/PassageList.aspx'</script>");
     }
 }

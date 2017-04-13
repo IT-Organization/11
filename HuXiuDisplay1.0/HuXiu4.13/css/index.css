@@ -278,8 +278,8 @@ body {
 }/*新闻大图*/
 .newsImage img{
 	display:block;
-	width:auto;
-	height:184px;
+	height:auto;
+	height: 184px;
 }
 
 .newsWriter {
@@ -315,7 +315,6 @@ body {
 }
 
 .newsWriter h1 {
-    cursor:pointer;
 	display: block;
 	float: left;
 	width: 350px;
@@ -325,13 +324,17 @@ body {
 	font-weight: normal;
 	font-size: 20px;
 	color: #333;
+    cursor:pointer;
+}
+.newsWriter h1:hover{
+    color:rgb(241,124,24);
 }
 
 .newsReading {
 	float: left;
-	width: 168px;
+	width: 165px;
 	height: 184px;
-	margin-left: 15px; 
+	margin-left: 20px; 
 }
 
 .newsReading button {
@@ -339,7 +342,7 @@ body {
 	height: 25px;
 	float: right;
 	border: none;
-	margin: 13px;
+	margin: 15px;
 	cursor: pointer;
 }
 
@@ -356,11 +359,7 @@ body {
 .newsReading p {
 	float: right;
 	margin-top: 100px;
-    margin-right: 5px;
-	margin-left: 30px;
-    height:20px;
-    line-height:20px;
-    text-align:right;
+	padding-left: 16px;
 	font-size: 14px;
 	color: #999;
 }
@@ -369,6 +368,7 @@ body {
 	color: #fd974d;
 	width: 91px;
 	height: 30px;
+	line-height:33px;
 	margin: 20px auto;
 	background: url(../images/loading.png) no-repeat;
 	position: relative;
@@ -376,8 +376,243 @@ body {
 	cursor: pointer;
 }
 .loading:hover{
-	width:91px;
+	width:99px;
 	height:30px;
-	margin-top:0px;
-	background-size: 91px auto;
+	margin-top: 12px;
+	margin-bottom: 20px;
+	background-size: 99px auto;
+}
+
+
+@media screen and (min-width: 1601px) {
+	.container {
+		width: 1405px;
+	}
+
+	.news {
+		width: 100%;
+		height: 184px;
+		margin: 50px 0;
+	}/*每条新闻*/
+
+	.newsImage {
+		width: 247px;
+		margin-right:50px;
+		height: 184px;
+		float: left;
+		overflow:hidden;
+	}/*新闻大图*/
+	.newsImage img{
+		display:block;
+		height:auto;
+		height: 184px;
+	}
+
+	.newsWriter {
+		width: 1100px;
+		height: 184px;
+		float: left;
+	}/*新闻作者+标题*/
+
+	.newsLeft {
+		float: left;
+		width: 80px;
+		height: 84px;
+		margin: 50px 40px;
+		text-align:center;
+	}
+
+	.newsLeft img {
+		margin-left:10px;
+		float: left;
+		border-radius: 50%;/*圆形头像*/
+		overflow: hidden;
+		width: 60px;
+		height: 60px;
+		line-height: 184px;	
+	}
+
+	.newsLeft p {
+		width:100%;
+		text-align: center;
+		float: left;
+		font-size: 15px;
+		color: #333;
+	}
+
+	.newsWriter h1 {
+		display: block;
+		float: left;
+		width: 700px;
+		height: 64px;
+		line-height: 32px;
+		margin: 60px 20px;
+		font-weight: normal;
+		font-size: 20px;
+		color: #333;
+	}
+
+	.newsReading {
+		float: left;
+		width: 165px;
+		height: 184px;
+		margin-left: 20px; 
+	}
+
+	.newsReading button {
+		width: 30px;
+		height: 25px;
+		float: right;
+		border: none;
+		margin: 15px;
+		cursor: pointer;
+	}
+	.newsReading p {
+		float: right;
+		margin-top: 100px;
+		padding-left: 16px;
+		font-size: 14px;
+		color: #999;
+	}
+	.turnImg li img {
+		width: 1405px;
+		height: 650px;
+	}
+	.topNews {
+		width: 1405px;
+		height: 650px;
+		margin: 0 0 80px 0;
+		overflow: hidden;
+		position: relative;
+	}/*头条轮播+热文+短趣*/
+
+	.turn {
+		width: 100%;
+		height: 418px;
+	}
+
+	.turnLeft {
+		cursor: pointer;
+		float: left;
+		border: none;
+		background: url(../images/arrow-left-black.png) no-repeat;
+		width: 64px;
+		height: 64px;
+		margin: 250px 50px 0px 50px;
+		position: relative;
+		z-index: +1;
+	}
+
+	.turnRight {
+		cursor: pointer;
+		float: right;
+		border: none;
+		background: url(../images/arrow-right-black.png) no-repeat;
+		width: 64px;
+		height: 64px;
+		margin: 250px 50px 0px 50px;
+		position: relative;
+		z-index: +1;
+	}
+
+	.hotInteresting {
+		width: 100%;
+		height: 200px;
+		background: rgba(0,0,0,0.6);
+		position: relative;
+		z-index: +2;
+	}
+
+	.content {
+		width: 100%;
+		height: 200px;
+		position: relative;
+	}
+
+	.issayAll {
+		position: absolute;
+		right: 10px;
+		bottom: 10px;
+		color: #fff;
+	}
+
+	.issayAll a {
+		color: #fff;
+	}
+
+	.issayAll a:hover {
+		color: #fd974d;
+	}
+
+	.issay {
+		height: 200px;
+		width: 351.25px;
+		float: left;
+		margin: 0;
+		padding: 0;
+	}
+
+	.issay h1 {
+		overflow: hidden;
+		font-weight: normal;
+		font-size: 16px;
+		width: 130px;
+		height:78px;
+		line-height: 26px;
+		margin: 56px auto;
+		color: #fff;
+	}
+
+	.issay h1:hover {
+		cursor: pointer;
+		color: #fd974d;
+	}
+
+	.displayNone {
+		display: none;
+	}
+
+	.titles {
+		width: 100%;
+		height: 30px;
+	}
+
+	.titles div a {
+		display: block;
+		width: 130px;
+		height: 30px;
+		background: rgba(0,0,0,1);
+		color: #fff;
+		text-decoration: none;
+	}
+
+	.hover a{
+		background: rgba(0,0,0,0.6)!important;
+	}
+
+	.hot {
+		float: left;
+		width: 130px;
+		text-align: center;
+		line-height: 30px;
+		color: #fff;
+		font-size: 18px;
+		background: 
+	}
+
+	.interesting {
+		float: left;
+		width: 130px;
+		text-align: center;
+		line-height: 30px;
+		color: #fff;
+		font-size: 18px;
+	}
+
+	.spare {
+		float: left;
+		width: 1145px;
+		height: 30px;
+		background: #000;
+	}
 }

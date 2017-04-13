@@ -57,11 +57,11 @@ public partial class ActivityContent : System.Web.UI.Page
 
                     }
                     else
-                        Response.Write("<script>alert('地址栏有误');location='/ActivityList.html'</script>");
+                        Response.Write("<script>alert('地址栏有误');location='/ActivityList.aspx'</script>");
                 }
             }
             else
-                Response.Write("<script>alert('地址栏有误');location='/ActivityList.html'</script>");
+                Response.Write("<script>alert('地址栏有误');location='/ActivityList.aspx'</script>");
 
         }
     

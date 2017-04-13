@@ -12,6 +12,7 @@
 	<script src="js/jquery.js"></script> -->
 	<script src="js/jqueryto.js"></script>
 	<script type="text/javascript" src="js/topnav.js"></script>
+    <script src="js/activity list click.js"></script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
     <div class="container">
@@ -38,6 +39,5 @@
 		</div>
 		<div class="loaddiv"></div>
 	</div>
-    <script src="js/activity list click.js"></script>
 </asp:Content>
 

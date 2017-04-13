@@ -12,7 +12,7 @@ $(function(){
             $otherWraps = $(".accordion a").not($parentWrap);
 
         }
-        if($(window).width()<1500){
+        if($(window).width()<1601){
             $parentWrap.animate({
                 width: 710
             }).addClass("curCol");
@@ -50,7 +50,7 @@ $(function(){
         
     });
     //$(".accordion a:eq(0)").trigger("click").addClass("curCol");
-    if($(window).width()<1500){
+    if($(window).width()<1601){
         $(".accordion a:eq(0)").css({"width":710}).addClass("curCol")
         .find(".accordion-button").attr("src","images/btn_hover.png");
         ;

@@ -52,39 +52,114 @@ $(document).ready(function(){
 });
 
 
-//轮播效果
-$(document).ready(function(){
-	//初始化
-	$(".turnImg").children("li").eq(0).css({"left":"0px"});
-	$(".turnImg").children("li").eq(1).css({"left":"1000px"});
-	$(".turnImg").children("li").eq(2).css({"left":"2000px"});
-	$(".turnImg").children("li").eq(3).css({"left":"3000px"});
-	//轮播事件-右
-	$(".turnRight").click(function(){
-		//防止连续多按页面崩溃
-		$(".turnImg").children("li").stop(true,true);
-		$(".turnImg").children("li").eq(0).animate({left:'-1000px'},350);
-		$(".turnImg").children("li").eq(1).animate({left:'0px'},350);
-		$(".turnImg").children("li").eq(2).animate({left:'1000px'},350);
-		$(".turnImg").children("li").eq(3).animate({left:'2000px'},350,function(){//调换li标签顺序
-			$(".turnImg").children("li").eq(3).after($(".turnImg").children("li").eq(0));
-			$(".turnImg").children("li").eq(3).css({"left":"3000px"});
-		});
-	});
+////轮播效果
+//$(document).ready(function(){
+//	//初始化
+//	$(".turnImg").children("li").eq(0).css({"left":"0px"});
+//	$(".turnImg").children("li").eq(1).css({"left":"1000px"});
+//	$(".turnImg").children("li").eq(2).css({"left":"2000px"});
+//	$(".turnImg").children("li").eq(3).css({"left":"3000px"});
+//	//轮播事件-右
+//	$(".turnRight").click(function(){
+//		//防止连续多按页面崩溃
+//		$(".turnImg").children("li").stop(true,true);
+//		$(".turnImg").children("li").eq(0).animate({left:'-1000px'},350);
+//		$(".turnImg").children("li").eq(1).animate({left:'0px'},350);
+//		$(".turnImg").children("li").eq(2).animate({left:'1000px'},350);
+//		$(".turnImg").children("li").eq(3).animate({left:'2000px'},350,function(){//调换li标签顺序
+//			$(".turnImg").children("li").eq(3).after($(".turnImg").children("li").eq(0));
+//			$(".turnImg").children("li").eq(3).css({"left":"3000px"});
+//		});
+//	});
 
-	//轮播事件-左
-	$(".turnLeft").click(function(){
-		//防止连续多按页面崩溃
-		$(".turnImg").children("li").stop(true,true);
-		$(".turnImg").children("li").eq(3).css({"left":"-1000px"});
-		$(".turnImg").children("li").eq(0).animate({left:'1000px'},350);
-		$(".turnImg").children("li").eq(1).animate({left:'2000px'},350);
-		$(".turnImg").children("li").eq(2).animate({left:'3000px'},350);
-		$(".turnImg").children("li").eq(3).animate({left:'0px'},350,function(){//调换li标签顺序
-			$(".turnImg").children("li").eq(0).before($(".turnImg").children("li").eq(3));
-		});
-	});
-})
+//	//轮播事件-左
+//	$(".turnLeft").click(function(){
+//		//防止连续多按页面崩溃
+//		$(".turnImg").children("li").stop(true,true);
+//		$(".turnImg").children("li").eq(3).css({"left":"-1000px"});
+//		$(".turnImg").children("li").eq(0).animate({left:'1000px'},350);
+//		$(".turnImg").children("li").eq(1).animate({left:'2000px'},350);
+//		$(".turnImg").children("li").eq(2).animate({left:'3000px'},350);
+//		$(".turnImg").children("li").eq(3).animate({left:'0px'},350,function(){//调换li标签顺序
+//			$(".turnImg").children("li").eq(0).before($(".turnImg").children("li").eq(3));
+//		});
+//	});
+//})
+//响应式
+//轮播效果
+$(document).ready(function () {
+    if (window.screen.width > 1600) {
+        $(".turnImg").children("li").eq(0).css({ "left": "0px" });
+        $(".turnImg").children("li").eq(1).css({ "left": "1405px" });
+        $(".turnImg").children("li").eq(2).css({ "left": "2810px" });
+        $(".turnImg").children("li").eq(3).css({ "left": "4215px" });
+        //轮播事件-右
+        $(".turnRight").click(function () {
+            //防止连续多按页面崩溃
+            $(".turnImg").children("li").stop(true, true);
+            $(".turnImg").children("li").eq(0).animate({ left: '-1405px' }, 350);
+            $(".turnImg").children("li").eq(1).animate({ left: '0px' }, 350);
+            $(".turnImg").children("li").eq(2).animate({ left: '1405px' }, 350);
+            $(".turnImg").children("li").eq(3).animate({ left: '2810px' }, 350, function () {//调换li标签顺序
+                $(".turnImg").children("li").eq(3).after($(".turnImg").children("li").eq(0));
+                $(".turnImg").children("li").eq(3).css({ "left": "4215px" });
+            });
+        });
+
+        //轮播事件-左
+        $(".turnLeft").click(function () {
+            //防止连续多按页面崩溃
+            $(".turnImg").children("li").stop(true, true);
+            $(".turnImg").children("li").eq(3).css({ "left": "-1405px" });
+            $(".turnImg").children("li").eq(0).animate({ left: '1405px' }, 350);
+            $(".turnImg").children("li").eq(1).animate({ left: '2810px' }, 350);
+            $(".turnImg").children("li").eq(2).animate({ left: '4215px' }, 350);
+            $(".turnImg").children("li").eq(3).animate({ left: '0px' }, 350, function () {//调换li标签顺序
+                $(".turnImg").children("li").eq(0).before($(".turnImg").children("li").eq(3));
+            });
+        });
+    }
+    else {
+        //初始化
+        $(".turnImg").children("li").eq(0).css({ "left": "0px" });
+        $(".turnImg").children("li").eq(1).css({ "left": "1000px" });
+        $(".turnImg").children("li").eq(2).css({ "left": "2000px" });
+        $(".turnImg").children("li").eq(3).css({ "left": "3000px" });
+        //轮播事件-右
+        $(".turnRight").click(function () {
+            //防止连续多按页面崩溃
+            $(".turnImg").children("li").stop(true, true);
+            $(".turnImg").children("li").eq(0).animate({ left: '-1000px' }, 350);
+            $(".turnImg").children("li").eq(1).animate({ left: '0px' }, 350);
+            $(".turnImg").children("li").eq(2).animate({ left: '1000px' }, 350);
+            $(".turnImg").children("li").eq(3).animate({ left: '2000px' }, 350, function () {//调换li标签顺序
+                $(".turnImg").children("li").eq(3).after($(".turnImg").children("li").eq(0));
+                $(".turnImg").children("li").eq(3).css({ "left": "3000px" });
+            });
+        });
+
+        //轮播事件-左
+        $(".turnLeft").click(function () {
+            //防止连续多按页面崩溃
+            $(".turnImg").children("li").stop(true, true);
+            $(".turnImg").children("li").eq(3).css({ "left": "-1000px" });
+            $(".turnImg").children("li").eq(0).animate({ left: '1000px' }, 350);
+            $(".turnImg").children("li").eq(1).animate({ left: '2000px' }, 350);
+            $(".turnImg").children("li").eq(2).animate({ left: '3000px' }, 350);
+            $(".turnImg").children("li").eq(3).animate({ left: '0px' }, 350, function () {//调换li标签顺序
+                $(".turnImg").children("li").eq(0).before($(".turnImg").children("li").eq(3));
+            });
+        });
+    }
+});
+
+
+//$(document).ready(function () {
+//    $(".newsList").on("click", ".news", function () {
+//        var id = $(this).children("h1").attr("id");
+//        window.open("PassageContent.aspx?id=" + id);
+//    })
+//})
 
 $(document).ready(function(){
 	$(".newsList").on("mouseover",".share",function(){

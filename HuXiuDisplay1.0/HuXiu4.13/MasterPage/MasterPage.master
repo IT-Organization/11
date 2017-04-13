@@ -1,12 +1,12 @@
-﻿<%@ Master Language="C#"  AutoEventWireup="true" CodeFile="MasterPage.master.cs" Inherits="MasterPage" %>
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="MasterPage.master.cs" Inherits="MasterPage_MasterPage" %>
 
 <!DOCTYPE html>
 
 <html xmlns="http://www.w3.org/1999/xhtml">
-
-    <asp:ContentPlaceHolder id="head" runat="server">
-        <meta charset="UTF-8">
-	<title>虎嗅网-短趣</title>
+<head runat="server">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>虎嗅网-短趣</title>
+    <%--<meta charset="UTF-8">--%>
 	<!-- <link rel="stylesheet" type="text/css" href="css/short.css"> -->
 	<link rel="stylesheet" type="text/css" href="css/shortmon.css">
 	<link rel="stylesheet" type="text/css" href="css/footer.css">
@@ -15,9 +15,13 @@
 	<script type="text/javascript" src="js/short.js"></script>
 	<script type="text/javascript" src="js/footer.js"></script>
 	<script type="text/javascript" src="js/topnav.js"></script>
+    <asp:ContentPlaceHolder id="head" runat="server">
     </asp:ContentPlaceHolder>
-
-    <div class="top"><!--顶部导航栏-->
+</head>
+<body>
+    <form id="form1" runat="server">
+    <div>
+        <div class="top"><!--顶部导航栏-->
 		<div class="topNav"><!--顶部导航栏居中部分-->
 			<div class="informationNav"><!--资讯导航栏-->
 				<div class="secondNav displaynone"><!--资讯二级菜单-->
@@ -54,11 +58,14 @@
 			</div>
 		</div>
 	</div>
+
         <asp:ContentPlaceHolder id="ContentPlaceHolder1" runat="server">
         
+
+
         </asp:ContentPlaceHolder>
 
-<div class="footer">
+        <div class="footer">
 		<img class="return-top" src="images/returntop.png" alt="" />
 		<ul class="footer-inf clearfix">
 			<li><a href="">关于我们</a></li>
@@ -80,5 +87,7 @@
 			</div>
 		</div>
 	</div >
+    </div>
+    </form>
+</body>
 </html>
-

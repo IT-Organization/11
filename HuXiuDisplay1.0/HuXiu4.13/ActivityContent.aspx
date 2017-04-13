@@ -2,9 +2,7 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
 
 <!DOCTYPE html>
-
 <html xmlns="http://www.w3.org/1999/xhtml">
-<head runat="server">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
 	<title>Document</title>
 	<link rel="stylesheet" href="css/activity content.css" />
@@ -12,10 +10,10 @@
 	<link rel="stylesheet" href="css/footer.css" />
 	<script src="js/jquery.js"></script>
 	<script type="text/javascript" src="js/topnav.js"></script>
-</head>
+    <script src="js/activity content.js"></script>
+	<script src="js/footer.js"></script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
-
 
 	<div class="container">
 		<div class="activity-main">
