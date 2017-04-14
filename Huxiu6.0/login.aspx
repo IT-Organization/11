@@ -5,7 +5,7 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>Document</title>
+	<title>虎嗅后台管理</title>
 	<link rel="stylesheet" href="css/login.css">
 	<!-- <link href="css/slide-unlock.css" rel="stylesheet">  -->
 	<script src="Scripts/jquery-3.1.1.min.js"></script>

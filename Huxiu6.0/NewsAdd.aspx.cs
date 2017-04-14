@@ -17,7 +17,7 @@ public partial class NewsFile_NewsAdd : System.Web.UI.Page
 
     protected void btnAdd_Click(object sender, EventArgs e)
     {
-        if (title.Text.Trim().Length > 0 && content.Text.Trim().Length > 0 && link.Text.Trim().Length > 0)
+        if (title.Text.Trim().Length > 0 && editor.InnerHtml.Trim().Length > 0 && link.Text.Trim().Length > 0)
         {
             string Pattern = @"((http|https)://)?(www.)?[a-z0-9\.]+(\.(com|net|cn|com\.cn|com\.net|net\.cn))(/[^\s\n]*)?";
             Regex r= new Regex(Pattern);
@@ -28,7 +28,7 @@ public partial class NewsFile_NewsAdd : System.Web.UI.Page
                     News person = new News
                     {
                         NewsTitle = title.Text.Trim(),
-                        NewsBody = content.Text.Trim(),
+                        NewsBody = UeditorHelper.change(editor.InnerHtml),
                         NewsDate = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"), //发表时间
                         NewsLink = link.Text.Trim(),
                         IsDel = false

@@ -61,7 +61,7 @@ public partial class AuthorFile_AuthorEditor : System.Web.UI.Page
                 person.AuthorSummary = summary.Text;
 
                 if (Request.Form["lb"] != "")
-                    person.AuthorImage = "/File/" + Request.Form["lb"];
+                    person.AuthorImage = "~/File/" + Request.Form["lb"];
 
                 if (db.SaveChanges() == 1)
                     Response.Write("<script>alert('编辑成功');location='AuthorEditor.aspx?id=" + id + "'</script>");

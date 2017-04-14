@@ -17,6 +17,7 @@
           <Property Name="ActivityTips" Type="nvarchar" MaxLength="100" Nullable="false" />
           <Property Name="ActivityImage" Type="nvarchar" MaxLength="100" Nullable="false" />
           <Property Name="IsDel" Type="bit" Nullable="false" />
+          <Property Name="IsHeadline" Type="bit" />
         </EntityType>
         <EntityType Name="Admin">
           <Key>
@@ -67,10 +68,19 @@
           </Key>
           <Property Name="NewsId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="NewsTitle" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="NewsBody" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="NewsBody" Type="nvarchar" MaxLength="100" Nullable="false" />
           <Property Name="NewsLink" Type="nvarchar" MaxLength="100" Nullable="false" />
           <Property Name="NewsDate" Type="char" MaxLength="20" Nullable="false" />
           <Property Name="IsDel" Type="bit" Nullable="false" />
+          <Property Name="NewsAgree" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="NewsAgree">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserIp" Type="nchar" MaxLength="10" Nullable="false" />
+          <Property Name="ItemId" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="Passage">
           <Key>
@@ -166,6 +176,7 @@
           <EntitySet Name="DeleteLog" EntityType="Self.DeleteLog" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Headline" EntityType="Self.Headline" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="News" EntityType="Self.News" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="NewsAgree" EntityType="Self.NewsAgree" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Passage" EntityType="Self.Passage" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="PassageCategory" EntityType="Self.PassageCategory" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="PassageInformation" EntityType="Self.PassageInformation" store:Type="Views" store:Schema="dbo">
@@ -199,19 +210,6 @@ FROM [dbo].[PassageInformation] AS [PassageInformation]</DefiningQuery>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="huxiuModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
-        <EntityType Name="Activity">
-          <Key>
-            <PropertyRef Name="ActivityId" />
-          </Key>
-          <Property Name="ActivityId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="ActivityTitle" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="ActivityWhat" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="ActivityWhere" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="ActivityWhen" Type="String" MaxLength="20" FixedLength="true" Unicode="false" Nullable="false" />
-          <Property Name="ActivityTips" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="ActivityImage" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="IsDel" Type="Boolean" Nullable="false" />
-        </EntityType>
         <EntityType Name="Admin">
           <Key>
             <PropertyRef Name="AdminId" />
@@ -264,10 +262,11 @@ FROM [dbo].[PassageInformation] AS [PassageInformation]</DefiningQuery>
           </Key>
           <Property Name="NewsId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="NewsTitle" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="NewsBody" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="NewsBody" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="NewsLink" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="NewsDate" Type="String" MaxLength="20" FixedLength="true" Unicode="false" Nullable="false" />
           <Property Name="IsDel" Type="Boolean" Nullable="false" />
+          <Property Name="NewsAgree" Type="Int32" Nullable="false" />
         </EntityType>
         <EntityType Name="Passage">
           <Key>
@@ -358,7 +357,6 @@ FROM [dbo].[PassageInformation] AS [PassageInformation]</DefiningQuery>
           </ReferentialConstraint>
         </Association>
         <EntityContainer Name="huxiuEntities" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="Activity" EntityType="Self.Activity" />
           <EntitySet Name="Admin" EntityType="Self.Admin" />
           <EntitySet Name="Author" EntityType="Self.Author" />
           <EntitySet Name="DeleteLog" EntityType="Self.DeleteLog" />
@@ -379,27 +377,37 @@ FROM [dbo].[PassageInformation] AS [PassageInformation]</DefiningQuery>
             <End Role="PassageCategory" EntitySet="PassageCategory" />
             <End Role="Passage" EntitySet="Passage" />
           </AssociationSet>
+          <EntitySet Name="Activity" EntityType="huxiuModel.Activity" />
+          <EntitySet Name="NewsAgree" EntityType="huxiuModel.NewsAgree" />
         </EntityContainer>
+        <EntityType Name="Activity">
+          <Key>
+            <PropertyRef Name="ActivityId" />
+          </Key>
+          <Property Name="ActivityId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ActivityTitle" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ActivityWhat" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ActivityWhere" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ActivityWhen" Type="String" Nullable="false" MaxLength="20" FixedLength="true" Unicode="false" />
+          <Property Name="ActivityTips" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="ActivityImage" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="IsDel" Type="Boolean" Nullable="false" />
+          <Property Name="IsHeadline" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="NewsAgree">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserIp" Type="String" Nullable="false" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="ItemId" Type="Int32" Nullable="false" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
         <EntityContainerMapping StorageEntityContainer="huxiuModelStoreContainer" CdmEntityContainer="huxiuEntities">
-          <EntitySetMapping Name="Activity">
-            <EntityTypeMapping TypeName="huxiuModel.Activity">
-              <MappingFragment StoreEntitySet="Activity">
-                <ScalarProperty Name="ActivityId" ColumnName="ActivityId" />
-                <ScalarProperty Name="ActivityTitle" ColumnName="ActivityTitle" />
-                <ScalarProperty Name="ActivityWhat" ColumnName="ActivityWhat" />
-                <ScalarProperty Name="ActivityWhere" ColumnName="ActivityWhere" />
-                <ScalarProperty Name="ActivityWhen" ColumnName="ActivityWhen" />
-                <ScalarProperty Name="ActivityTips" ColumnName="ActivityTips" />
-                <ScalarProperty Name="ActivityImage" ColumnName="ActivityImage" />
-                <ScalarProperty Name="IsDel" ColumnName="IsDel" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="Admin">
             <EntityTypeMapping TypeName="huxiuModel.Admin">
               <MappingFragment StoreEntitySet="Admin">
@@ -450,6 +458,7 @@ FROM [dbo].[PassageInformation] AS [PassageInformation]</DefiningQuery>
           <EntitySetMapping Name="News">
             <EntityTypeMapping TypeName="huxiuModel.News">
               <MappingFragment StoreEntitySet="News">
+                <ScalarProperty Name="NewsAgree" ColumnName="NewsAgree" />
                 <ScalarProperty Name="NewsId" ColumnName="NewsId" />
                 <ScalarProperty Name="NewsTitle" ColumnName="NewsTitle" />
                 <ScalarProperty Name="NewsBody" ColumnName="NewsBody" />
@@ -495,6 +504,30 @@ FROM [dbo].[PassageInformation] AS [PassageInformation]</DefiningQuery>
                 <ScalarProperty Name="IsDel" ColumnName="IsDel" />
                 <ScalarProperty Name="AuthorId" ColumnName="AuthorId" />
                 <ScalarProperty Name="AuthorName" ColumnName="AuthorName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Activity">
+            <EntityTypeMapping TypeName="huxiuModel.Activity">
+              <MappingFragment StoreEntitySet="Activity">
+                <ScalarProperty Name="IsHeadline" ColumnName="IsHeadline" />
+                <ScalarProperty Name="IsDel" ColumnName="IsDel" />
+                <ScalarProperty Name="ActivityImage" ColumnName="ActivityImage" />
+                <ScalarProperty Name="ActivityTips" ColumnName="ActivityTips" />
+                <ScalarProperty Name="ActivityWhen" ColumnName="ActivityWhen" />
+                <ScalarProperty Name="ActivityWhere" ColumnName="ActivityWhere" />
+                <ScalarProperty Name="ActivityWhat" ColumnName="ActivityWhat" />
+                <ScalarProperty Name="ActivityTitle" ColumnName="ActivityTitle" />
+                <ScalarProperty Name="ActivityId" ColumnName="ActivityId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="NewsAgree">
+            <EntityTypeMapping TypeName="huxiuModel.NewsAgree">
+              <MappingFragment StoreEntitySet="NewsAgree">
+                <ScalarProperty Name="ItemId" ColumnName="ItemId" />
+                <ScalarProperty Name="UserIp" ColumnName="UserIp" />
+                <ScalarProperty Name="id" ColumnName="id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

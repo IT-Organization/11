@@ -111,8 +111,7 @@ thumbnailHeight = 100 * ratio,
         } else {
             uploader.upload();
         }
-        if($(".state").text()=="已上传")
-            $("#lb").val($("#info").text());
+        $("#lb").val($("#info").text());
     });
 
     

@@ -23,7 +23,10 @@
         <br />
         内容：
         <br />   
-        <asp:TextBox ID="content" runat="server" MaxLength="95" TextMode="MultiLine" Height="159px" Width="289px"></asp:TextBox>
+        <textarea id="editor" runat="server" type="text/plain"  style="width:701px; height:318px;" ></textarea>
+        <script type="text/javascript">
+            var ue = UE.getEditor('<%=editor.ClientID %>');
+        </script>
         <br />
         详情链接：<asp:TextBox ID="link" MaxLength="95" runat="server" ></asp:TextBox>
         <br />

@@ -25,7 +25,7 @@ public partial class AuthorFile_AuthorAdd : System.Web.UI.Page
                 {
                     AuthorName = name.Text,
                     AuthorSex = sex.SelectedValue == "1" ? true : false,
-                    AuthorImage = "/File/" + Request.Form["lb"],
+                    AuthorImage = "~/File/" + Request.Form["lb"],
                     AuthorSummary = summary.Text
 
                 };

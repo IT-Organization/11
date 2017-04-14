@@ -85,7 +85,7 @@ public partial class PassageEditor : System.Web.UI.Page
                 person.PassageTitle = title.Text;//标题
                 person.PassageBody = UeditorHelper.change(editor.InnerHtml);//内容
                 if (Request.Form["lb"] != "")
-                    person.PassageImage = "/File/" + Request.Form["lb"];
+                    person.PassageImage = "~/File/" + Request.Form["lb"];
                 person.PassageCategory = Convert.ToInt32(category.SelectedValue);//资讯分类
                 person.PublishDate = Convert.ToDateTime(dates.Text).ToString("yyyy-MM-dd HH:mm:ss");//时间
                 person.AuthorId = Convert.ToInt32(author.SelectedValue);//作者

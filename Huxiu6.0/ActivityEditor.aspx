@@ -45,11 +45,17 @@
         <br />
         活动内容：
         <br />
-               <asp:TextBox ID="content"  runat="server" Enabled="false" TextMode="MultiLine" MaxLength="300" Height="166px" Width="301px" ></asp:TextBox>
+        <textarea id="editor" runat="server" type="text/plain" style="width: 1024px; height: 500px;"></textarea>
+        <script type="text/javascript">
+            var CheckF = $('#ChangeFlag').val();
 
-
-        <br />
-
+            var ue = UE.getEditor('<%=editor.ClientID %>');
+                ue.addListener('ready', function () {
+                    if (CheckF != '1') {
+                        ue.setDisabled();
+                    }
+                });
+        </script>
 
         <br />
         活动地点：<asp:TextBox ID="where" runat="server" Enabled="false" ></asp:TextBox>

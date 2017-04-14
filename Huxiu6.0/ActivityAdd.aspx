@@ -41,9 +41,9 @@
         </div>    
 
        <br /> 
-       活动内容：<br />
-            <asp:TextBox ID="content"  runat="server" TextMode="MultiLine" MaxLength="300" Height="182px" Width="380px" ></asp:TextBox>
-            <br />
+        <textarea id="editor" runat="server" type="text/plain"  style="width:1024px;height:500px;" ></textarea>
+        <script type="text/javascript">
+        var ue = UE.getEditor('<%=editor.ClientID %>');</script>
         <br />
         活动地点：<asp:TextBox ID="where" MaxLength="45" runat="server" ></asp:TextBox>
             <br />

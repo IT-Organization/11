@@ -27,7 +27,7 @@ public partial class NewsFile_NewsEditor : System.Web.UI.Page
                     {
                         title.Text = person.NewsTitle;//标题
 
-                        content.Text = person.NewsBody;//内容
+                        editor.InnerHtml = person.NewsBody;//内容
 
                         dates.Text = person.NewsDate.ToString();//发布时间
 
@@ -48,29 +48,22 @@ public partial class NewsFile_NewsEditor : System.Web.UI.Page
     {
         int id = Convert.ToInt32(Request.QueryString["id"]);
 
-        if (title.Text.Trim().Length > 0 && content.Text.Trim().Length > 0 && link.Text.Trim().Length > 0)
+        if (title.Text.Trim().Length > 0 && editor.InnerHtml.Trim().Length > 0 && link.Text.Trim().Length > 0)
         {
-            string Pattern = @"((http|https)://)?(www.)?[a-z0-9\.]+(\.(com|net|cn|com\.cn|com\.net|net\.cn))(/[^\s\n]*)?";
-
-            Regex r1 = new Regex(Pattern);
-
-            if (r1.IsMatch(link.Text.Trim()))
+            using (var db = new huxiuEntities())//修改短趣
             {
-                using (var db = new huxiuEntities())//修改短趣
-                {
-                    News person = (from it in db.News where it.NewsId == id select it).FirstOrDefault();
+                News person = (from it in db.News where it.NewsId == id select it).FirstOrDefault();
 
-                    person.NewsTitle = title.Text.Trim();//标题
-                    person.NewsBody = content.Text.Trim();//内容
-                                                          //  person.NewsDate = Convert.ToDateTime(dates.Text);//发布时间不做修改
-                    person.NewsLink = link.Text.Trim();//超链接
-                                                       //  person.IsDel = false;//是否删除
+                person.NewsTitle = title.Text.Trim();//标题
+                person.NewsBody = UeditorHelper.change(editor.InnerHtml);//内容
+                                                                         //  person.NewsDate = Convert.ToDateTime(dates.Text);//发布时间不做修改
+                person.NewsLink = link.Text.Trim();//超链接
+                                                   //  person.IsDel = false;//是否删除
 
-                    if (db.SaveChanges() == 1)
-                        Response.Write("<script>alert('编辑成功');location='NewsEditor.aspx?id=" + id + "'</script>");
-                    else
-                        Response.Write("<script>alert('编辑失败请重试')</script>");
-                }
+                if (db.SaveChanges() == 1)
+                    Response.Write("<script>alert('编辑成功');location='NewsEditor.aspx?id="+id+"'</script>");
+                else
+                    Response.Write("<script>alert('编辑失败请重试')</script>");
             }
         }
 
@@ -81,7 +74,7 @@ public partial class NewsFile_NewsEditor : System.Web.UI.Page
     protected void lbtnEditor_Click(object sender, EventArgs e)
     {
         title.Enabled = true;
-        content.Enabled = true;
+        ChangeFlag.Value = "1";
         link.Enabled = true;
         lbtnEditor.Visible = false;
         btnEditor.Visible = true;

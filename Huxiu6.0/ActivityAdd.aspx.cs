@@ -38,7 +38,7 @@ public partial class ActivityFile_ActivityAdd : System.Web.UI.Page
     }
     protected void btnAdd_Click(object sender, EventArgs e)
     {
-        if (title.Text.Trim().Length > 0 && Request.Form["lb"].Length>0 &&  requestedDeliveryDateTextBox.Text.Trim().Length>0 && content.Text.Trim().Length > 0 && where.Text.Trim().Length > 0 && tips.Text.Trim().Length > 0)
+        if (title.Text.Trim().Length > 0 && Request.Form["lb"].Length>0 &&  requestedDeliveryDateTextBox.Text.Trim().Length>0 && editor.InnerHtml.Trim().Length > 0 && where.Text.Trim().Length > 0 && tips.Text.Trim().Length > 0)
         {
             using (var db = new huxiuEntities())
             {
@@ -46,9 +46,9 @@ public partial class ActivityFile_ActivityAdd : System.Web.UI.Page
                 {
                     ActivityTitle = title.Text,
 
-                    ActivityWhat =content.Text.Trim(),
+                    ActivityWhat = UeditorHelper.change( editor.InnerHtml),
 
-                    ActivityImage = "/File/" + Request.Form["lb"],//活动封面
+                    ActivityImage = "~/File/" + Request.Form["lb"],//活动封面
 
                     ActivityWhen = requestedDeliveryDateTextBox.Text,
 

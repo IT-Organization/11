@@ -22,10 +22,24 @@
                 var url="QRshare.ashx?str="+str;
                 $("#QRimg").attr('src',url);
             };
-            
-     
+        </script>
+        <button onclick ="test();return false">testHeadInterface</button>
+        <script>
+            $.ajax({
+                type: "POST",
+                /*url:"try4.txt",*/
+                url: "getActHead.ashx",
+                //data:{pageNumber:i,pageSize:4},
+                //发送给后台，请求第几页信息，每页信息多大
+                //dataType:"json",
+                async: true,
+                success: function (data) {
+                    alert("successful");
+                }
+            })
 
         </script>
+        
     </div>
     </form>
 </body>

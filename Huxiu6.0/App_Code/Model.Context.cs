@@ -23,7 +23,6 @@ public partial class huxiuEntities : DbContext
         throw new UnintentionalCodeFirstException();
     }
 
-    public DbSet<Activity> Activity { get; set; }
     public DbSet<Admin> Admin { get; set; }
     public DbSet<Author> Author { get; set; }
     public DbSet<DeleteLog> DeleteLog { get; set; }
@@ -32,4 +31,6 @@ public partial class huxiuEntities : DbContext
     public DbSet<Passage> Passage { get; set; }
     public DbSet<PassageCategory> PassageCategory { get; set; }
     public DbSet<PassageInformation> PassageInformation { get; set; }
+    public DbSet<Activity> Activity { get; set; }
+    public DbSet<NewsAgree> NewsAgree { get; set; }
 }

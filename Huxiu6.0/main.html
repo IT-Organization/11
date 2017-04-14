@@ -52,6 +52,10 @@
 		<ul>
 			<li id="topnews" onclick="showUl(this)">
 				<h1>头条管理</h1>
+                <ul id="hide08">
+                    <li id="headPsg"><a href="#">资讯头条</a></li>
+                    <li id="headAct"><a href="#">活动头条</a></li>
+                </ul>
 			</li>
 		</ul>
 		<ul>
@@ -121,7 +125,7 @@ var hide04 = document.getElementById("hide04");
 var hide05 = document.getElementById("hide05");
 var hide06 = document.getElementById("hide06");
 var hide07 = document.getElementById("hide07");
-
+var hide08 = document.getElementById("hide08");
 hide01.onclick=function(event){
   // 停止DOM事件层次传播
   event.stopPropagation();
@@ -150,6 +154,10 @@ hide07.onclick=function(event){
   // 停止DOM事件层次传播
   event.stopPropagation();
 };
+hide08.onclick = function (event) {
+    // 停止DOM事件层次传播
+    event.stopPropagation();
+};
 
 //加载
 var information = document.getElementById("information");//资讯
@@ -164,6 +172,8 @@ var addact = document.getElementById("addact");//添加活动
 var writer = document.getElementById("writer");//作者信息
 var addwriter = document.getElementById("addwriter");//添加作者
 var topnews = document.getElementById("topnews");//头条管理
+var headPsg = document.getElementById("headPsg");//资讯头条
+var headAct = document.getElementById("headAct");//活动头条
 var classes = document.getElementById("classes");//分类列表
 var addcla = document.getElementById("addcla");//添加分类
 var iframe = document.getElementById("main");//加载位置
@@ -179,7 +189,9 @@ addinter.onclick=function(){iframe.src="NewsAdd.aspx";}
 addact.onclick=function(){iframe.src="ActivityAdd.aspx";}
 writer.onclick=function(){iframe.src="AuthorList.aspx";}
 addwriter.onclick=function(){iframe.src="AuthorAdd.aspx";}
-topnews.onclick=function(){iframe.src="SetHeadline.aspx";}
+//topnews.onclick = function () { iframe.src = "SetHeadline.aspx"; }
+headPsg.onclick = function () { iframe.src = "SetHeadline.aspx"; }
+headAct.onclick = function () { iframe.src = "SetActiveHeadline.aspx";}
 classes.onclick=function(){iframe.src="PCategoryList.aspx";}
 addcla.onclick=function(){iframe.src="PCategoryAdd.aspx";}
 

@@ -19,9 +19,6 @@ public class QRshare : IHttpHandler
         context.Response.ClearContent();                    //清空流
         context.Response.ContentType = "image/Png";         //设置保存图像的格式
         context.Response.BinaryWrite(ms.ToArray());         //执行保存图像的操作
-
-
-
     }
         //生成二维码
     private MemoryStream GenerateQRByQrCodeNet(string content)

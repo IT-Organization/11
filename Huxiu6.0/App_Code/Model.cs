@@ -20,6 +20,7 @@ public partial class Activity
     public string ActivityTips { get; set; }
     public string ActivityImage { get; set; }
     public bool IsDel { get; set; }
+    public Nullable<bool> IsHeadline { get; set; }
 }
 
 public partial class Admin
@@ -78,6 +79,14 @@ public partial class News
     public string NewsLink { get; set; }
     public string NewsDate { get; set; }
     public bool IsDel { get; set; }
+    public int NewsAgree { get; set; }
+}
+
+public partial class NewsAgree
+{
+    public int id { get; set; }
+    public string UserIp { get; set; }
+    public int ItemId { get; set; }
 }
 
 public partial class Passage

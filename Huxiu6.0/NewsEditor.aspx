@@ -27,7 +27,11 @@
         <br />
         内容：
                 <br />
-       <asp:TextBox ID="content"  runat="server" TextMode="MultiLine" Enabled="false"></asp:TextBox>
+       <textarea id="editor" runat="server" type="text/plain"  style="width:701px; height:318px;" ></textarea>
+        <script type="text/javascript">
+            var ue = UE.getEditor('<%=editor.ClientID %>');
+        </script>
+        <input id="ChangeFlag" runat="server" type="hidden" />
 
         <br />
         详情链接：<asp:TextBox ID="link" MaxLength="95"  Enabled="false" runat="server" ></asp:TextBox>

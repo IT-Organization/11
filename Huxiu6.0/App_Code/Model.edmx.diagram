@@ -5,7 +5,6 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="c9e044a8c580484b8aedfbb4dbc92ef2" Name="Diagram1">
-        <EntityTypeShape EntityType="huxiuModel.Activity" Width="1.5" PointX="5.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="huxiuModel.Admin" Width="1.5" PointX="2.75" PointY="5.75" IsExpanded="true" />
         <EntityTypeShape EntityType="huxiuModel.Author" Width="1.5" PointX="0.75" PointY="1.25" IsExpanded="true" />
         <EntityTypeShape EntityType="huxiuModel.DeleteLog" Width="1.5" PointX="5.75" PointY="4.75" IsExpanded="true" />
@@ -17,6 +16,8 @@
         <AssociationConnector Association="huxiuModel.FK_Author_Author" ManuallyRouted="false" />
         <AssociationConnector Association="huxiuModel.FK_Passage_Author" ManuallyRouted="false" />
         <AssociationConnector Association="huxiuModel.FK_Passage_Passage" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="huxiuModel.Activity" Width="1.5" PointX="7.75" PointY="7.75" />
+        <EntityTypeShape EntityType="huxiuModel.NewsAgree" Width="1.5" PointX="0.75" PointY="9.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
