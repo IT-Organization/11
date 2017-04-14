@@ -6,10 +6,10 @@
 <head runat="server">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <title></title>
-    <script src="/webUploader/jquery-1.7.1.min.js"></script>
-    <link href="/webUploader/webuploader.css" rel="stylesheet" />
-    <script src="/webUploader/webuploader.nolog.js"></script>
-        <script src="/webUploader/fileUpload.js"></script>
+    <script src="webUploader/jquery-1.7.1.min.js"></script>
+    <link href="webUploader/webuploader.css" rel="stylesheet" />
+    <script src="webUploader/webuploader.nolog.js"></script>
+        <script src="webUploader/fileUpload.js"></script>
 </head>
 <body>
     <form id="form1" runat="server">

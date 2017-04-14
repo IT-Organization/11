@@ -11,7 +11,7 @@
     <form id="form1" runat="server">
     <div>
         <br />
-    类名：<asp:TextBox ID="name" runat="server" MaxLength="45" ></asp:TextBox>
+    类名：<asp:TextBox ID="name" runat="server" MaxLength="4" ></asp:TextBox>
         <br />
         <br />
         <asp:Button ID="btnAdd" runat="server" Text="添加" OnClick="btnAdd_Click" />

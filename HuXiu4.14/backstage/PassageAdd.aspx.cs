@@ -54,7 +54,7 @@ public partial class PassageAdd : System.Web.UI.Page
                 {
                     PassageTitle = title.Text,
                     PassageBody = UeditorHelper.change(editor.InnerHtml),
-                    PassageImage = "~/File/" + Request.Form["lb"],
+                    PassageImage = "/File/" + Request.Form["lb"],
                     PassageCategory = Convert.ToInt32(category.SelectedValue),
                     PublishDate = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"),
                     AuthorId = Convert.ToInt32(author.SelectedValue),

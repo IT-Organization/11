@@ -17,9 +17,11 @@ body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,code,form,fieldset,legend,input
  .container{
  	width:1000px;
 	margin:0 auto;
+	position:relative;
  }
  .accordion{
- 	background:url(../images/banner_bg3.png) no-repeat ;
+ 	background:url(../images/banner_bg2.png) no-repeat ;
+ 	background-size:710px 400px;
  	background-position:right; 
 	width:100%;
 	height:400px;
@@ -38,6 +40,8 @@ body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,code,form,fieldset,legend,input
  .accordion-act{
 	display:block;
 	float:right;
+	width:710px;
+	height:400px;
  }
 .accordion-button{
 	z-index:3;
@@ -151,6 +155,7 @@ body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,code,form,fieldset,legend,input
 	letter-spacing:3px;
 	border:1px solid #333;
 	border-radius: 10px;
+	cursor:pointer;
 }
 .activity-text a:hover{
 	background: rgb(246,124,22);
@@ -211,11 +216,12 @@ body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,code,form,fieldset,legend,input
 	background-size: 99px auto;
 }
 .return-top{
+	z-index:3;
 	display:block;
 	cursor:pointer;
-	position: absolute;
-	right:130px;
-	top:-60px;
+	position: fixed;
+	right:120px;
+	//top:-60px;
 }
 .footer{
 	position:relative;
@@ -234,6 +240,7 @@ body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,code,form,fieldset,legend,input
 	}
 	.accordion-act{
 		height:560.5px;
+		width:995px;
 	}
 	.accordion-button{
 		width:40px;
@@ -303,4 +310,7 @@ body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,code,form,fieldset,legend,input
 	.activity-text-2 a{
 		margin-left:440px;
 	}
+	.return-top{
+		right:201.5px;
+	} 
 }

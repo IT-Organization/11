@@ -7,9 +7,9 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <title></title>
     <script src="Scripts/jquery-3.1.1.min.js"></script>
-    <link href="/webUploader/webuploader.css" rel="stylesheet" />
-    <script src="/webUploader/webuploader.nolog.js"></script>
-    <script src="/webUploader/fileUpload.js"></script>
+    <link href="webUploader/webuploader.css" rel="stylesheet" />
+    <script src="webUploader/webuploader.nolog.js"></script>
+    <script src="webUploader/fileUpload.js"></script>
        <script>
            $(function () {
 

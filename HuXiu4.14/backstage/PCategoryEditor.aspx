@@ -10,7 +10,7 @@
 <body>
     <form id="form1" runat="server">
     <div>
-    <asp:TextBox ID="name" runat="server"  Enabled="false" MaxLength="45"></asp:TextBox>
+    <asp:TextBox ID="name" runat="server"  Enabled="false" MaxLength="4"></asp:TextBox>
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
         <asp:LinkButton runat="server" ID="editor" OnClick="editor_Click" Text="编辑"></asp:LinkButton>
         <br />

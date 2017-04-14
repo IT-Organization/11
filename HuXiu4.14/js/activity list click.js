@@ -1,8 +1,50 @@
 $(function(){
-    var i=0,j,jsonObj;//i是当前请求页数,j用于循环,jsonObj是解析后的json对象
+    var i=0,j,jsonobj,jsonObj,id3;//i是当前请求页数,j用于循环,jsonObj是解析后的json对象
     var judge=false;//如果滚动添加瀑布流的判断。
     var $el, $parentWrap, $otherWrap,pageNow;
+    $.ajax({
+            type:"GET",
+            /*url:"try4.txt",*/
+            url:"/Ajax/getActHead.ashx",
+            //data:{pageNumber:i,pageSize:4},
+                //发送给后台，请求第几页信息，每页信息多大
+                //dataType:"json",
+            async:true,
+            success:function(data){
+                jsonobj=JSON.parse(data);
+                for(j=0;j<2;j++)
+                {
+                    $(".accordion a:eq("+j+")").find($(".accordion-act"))
+                    .attr("src",jsonobj[j].URL);
+                }
+                var background=jsonobj[2].URL;
+                $(".accordion").css({
+                    "backgroundImage":"url("+background+")",
+                    "backgroundRepeat":"no-repeat",
+                    "backgroundPosition":"right"
+                });
+                for(j=0;j<3;j++)
+                {
+                    $(".accordion a:eq("+j+")").attr("href","ActivityContent.aspx?id="+jsonobj[j].ID);
+                }
+                id3=jsonobj[2].ID;
+            }
+    })
     appendAct();
+    $(window).scroll(function(){
+        if($(document).scrollTop()==0)
+        {
+            $(".return-top").animate({opacity:0},300);
+            return false;
+        }
+        $(".return-top").css({
+            "opacity":1,
+            "position":"fixed",
+            "top":$(window).height()-230
+        });
+    })
+
+
     $(".accordion a").click(function(e){
         if(!$(this).hasClass("curCol"))
         {
@@ -12,7 +54,7 @@ $(function(){
             $otherWraps = $(".accordion a").not($parentWrap);
 
         }
-        if($(window).width()<1601){
+        if(window.screen.width<1601){
             $parentWrap.animate({
                 width: 710
             }).addClass("curCol");
@@ -50,7 +92,7 @@ $(function(){
         
     });
     //$(".accordion a:eq(0)").trigger("click").addClass("curCol");
-    if($(window).width()<1601){
+    if(window.screen.width<1601){
         $(".accordion a:eq(0)").css({"width":710}).addClass("curCol")
         .find(".accordion-button").attr("src","images/btn_hover.png");
         ;
@@ -63,7 +105,7 @@ $(function(){
     $("#starter").trigger("click");
     $(".accordion-special-button").click(function(){
         if($(".act-back").hasClass("curCol"))
-            window.location="activity content.html";
+            window.location="ActivityContent.aspx?id="+id3;
         else
              $(".act-back").click();
         })
@@ -116,9 +158,9 @@ $(function(){
                         var processImg=$("<img>").appendTo(actProcess);
                         var processP=$("<p>").text(jsonObj[j].ActivityWhen).appendTo(actProcess);
                         if(jsonObj[j].ActivityWhen=="进行中")
-                            processImg.attr("src", "images/circle_orange.png");
+                            processImg.attr("src","images/circle_black.png");
                         else
-                            processImg.attr("src", "images/circle_black.png");
+                            processImg.attr("src","images/circle_orange.png");
                     var huodongImgdiv=$("<div>").addClass("activity-img").appendTo(actIn);
                     if(j%2!=0) huodongImgdiv.addClass("activity-img-2");
                     var huodongImg=$("<img>").attr("src",jsonObj[j].ActivityImage).appendTo(huodongImgdiv);

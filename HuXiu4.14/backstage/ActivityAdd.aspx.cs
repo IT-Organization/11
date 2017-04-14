@@ -48,7 +48,7 @@ public partial class ActivityFile_ActivityAdd : System.Web.UI.Page
 
                     ActivityWhat = UeditorHelper.change( editor.InnerHtml),
 
-                    ActivityImage = "~/File/" + Request.Form["lb"],//活动封面
+                    ActivityImage = "/File/" + Request.Form["lb"],//活动封面
 
                     ActivityWhen = requestedDeliveryDateTextBox.Text,
 

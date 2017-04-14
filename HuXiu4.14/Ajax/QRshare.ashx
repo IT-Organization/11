@@ -2,7 +2,6 @@
 
 using System;
 using System.Web;
-
 using Gma.QrCodeNet.Encoding;
 using Gma.QrCodeNet.Encoding.Windows.Render;
 using System.IO;

@@ -88,7 +88,7 @@ public partial class ActivityEditor : System.Web.UI.Page
                 person.ActivityWhat = UeditorHelper.change(editor.InnerHtml);//富文本编辑器里的内容
 
                 if (Request.Form["lb"] != "")
-                    person.ActivityImage = "~/File/" + Request.Form["lb"];
+                    person.ActivityImage = "/File/" + Request.Form["lb"];
 
                 if (requestedDeliveryDateTextBox.Text.Trim().Length > 0)
                     person.ActivityWhen = requestedDeliveryDateTextBox.Text;

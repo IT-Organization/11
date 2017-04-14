@@ -9,10 +9,10 @@
      <script type="text/javascript" charset="utf-8" src="/ueditor/ueditor.config.js"></script>
     <script type="text/javascript" charset="utf-8" src="/ueditor/ueditor.all.min.js"> </script>
     <script type="text/javascript" charset="utf-8" src="/ueditor/lang/zh-cn/zh-cn.js"></script>
-    <script src="/webUploader/jquery-1.7.1.min.js"></script>
-    <link href="/webUploader/webuploader.css" rel="stylesheet" />
-    <script src="/webUploader/webuploader.nolog.js"></script>
-    <script src="/webUploader/fileUpload.js"></script>
+    <script src="webUploader/jquery-1.7.1.min.js"></script>
+    <link href="webUploader/webuploader.css" rel="stylesheet" />
+    <script src="webUploader/webuploader.nolog.js"></script>
+    <script src="webUploader/fileUpload.js"></script>
    <style type="text/css">
         div{
             width:100%;
