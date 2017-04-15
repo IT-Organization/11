@@ -29,12 +29,12 @@ public partial class PCategoryEditor : System.Web.UI.Page
                         name.Text = person.CategoryName;
                     }
                     else
-                        Response.Write("<script>alert('地址栏有误');location='/PCategoryList.aspx'</script>");
+                        Response.Write("<script>alert('地址栏有误');location='./PCategoryList.aspx'</script>");
 
                 }
             }
             else
-                Response.Write("<script>alert('地址栏有误');location='/PCategoryList.aspx'</script>");
+                Response.Write("<script>alert('地址栏有误');location='./PCategoryList.aspx'</script>");
         }
     }
 
@@ -51,7 +51,7 @@ public partial class PCategoryEditor : System.Web.UI.Page
                 PassageCategory people = (from it in db.PassageCategory where it.CategoryName == name.Text.Trim() select it).FirstOrDefault();
 
                 if ( name.Text.Trim()==people0.CategoryName )
-                     Response.Write("<script>alert('未修改');location='/PCategoryList.aspx'</script>");
+                     Response.Write("<script>alert('未修改');location='./PCategoryList.aspx'</script>");
                 else if(people==null)
                 {
                     PassageCategory person = (from it in db.PassageCategory where it.PCategoryId == id select it).FirstOrDefault();
@@ -59,7 +59,7 @@ public partial class PCategoryEditor : System.Web.UI.Page
                     person.CategoryName = name.Text.Trim();
 
                     if (db.SaveChanges() == 1)
-                        Response.Write("<script>alert('修改成功');location='/PCategoryList.aspx'</script>");
+                        Response.Write("<script>alert('修改成功');location='./PCategoryList.aspx'</script>");
                     else
                         Response.Write("<script>alert('修改失败请重试')</script>");
                 }

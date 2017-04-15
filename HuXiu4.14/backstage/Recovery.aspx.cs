@@ -50,7 +50,12 @@ public partial class recovery : System.Web.UI.Page
             //删除过期记录
             DelHelper del = new DelHelper();
                 del.dellongtimelog();
+
+            
         }
+        //Response.Write("<script>location.href='Recovery.aspx'</script>");
+      
+
     }
 
     protected void DplistCategory_TextChanged(object sender, EventArgs e)
@@ -263,12 +268,14 @@ public partial class recovery : System.Web.UI.Page
     /// <param name="currentPage"></param>
     protected void JumpPage(DataTable dt, int currentPage)
     {
-        divTool.Visible = true;
         PagedDataSource pds = new PagedDataSource();
         pds.AllowPaging = true;
-        pds.PageSize = 10;
+        pds.PageSize = 5;
         pds.DataSource = dt.DefaultView;
-        lblCount.Text = "共有记录："+pds.Count.ToString()+"条";
+        lbTotal.Text = pds.PageCount.ToString();
+        if(pds.DataSourceCount>pds.PageSize)
+        divTool.Visible = true;
+        lblCount.Text = "共有记录："+pds.DataSourceCount.ToString()+"条";
         pds.CurrentPageIndex = currentPage - 1;
         RptRecoverList.DataSource = pds;
         RptRecoverList.DataBind();
@@ -299,9 +306,9 @@ public partial class recovery : System.Web.UI.Page
                 string postUrl = "";
                 //说明用 id 来跳转详情页面
                 if (DplistCategory.SelectedValue=="资讯")             //跳资讯
-                postUrl = "/PassageEditor.aspx?id=" + e.CommandArgument.ToString().Trim();
+                postUrl = "./PassageEditor.aspx?id=" + id;
                 else                                                //跳活动
-                    postUrl = "/ActivityEditor.aspx?id=" + e.CommandArgument.ToString().Trim();
+                    postUrl = "./ActivityEditor.aspx?id=" + id;
 
                 Response.Write("<script>window.open('" + postUrl + "','_blank')</script>");
 
@@ -319,7 +326,7 @@ public partial class recovery : System.Web.UI.Page
         {
             //打开管理员信息的窗口---弹窗形式
             string ID = e.CommandArgument.ToString();
-            string link = "/AdminInfo.aspx?id="+ID;
+            string link = "./AdminInfo.aspx?id="+ID;
             Response.Write("<script language='javascript'>window.open('" + link + "', 'newwindow', 'height=600, width=300, top='+Math.round((window.screen.height-200)/2)+',left='+Math.round((window.screen.width-300)/2)+', toolbar=no,menubar = no, scrollbars = no, resizable = no, location = no, status = no')</script>");
         }
         else if (e.CommandName == "recover")
