@@ -11,7 +11,12 @@
     <form  id="form1" runat ="server">
 	<div class="top">
 		<div class="logo">
-			<img src="images/logo.jpg">
+			<a href="#"><img src="images/logo.jpg" onclick="goIndex();"></a>
+            <script>
+                function goIndex() {
+                    window.open('../Index.aspx', '_blank');
+                }
+            </script>
 		</div>
 		<div class="login">
 			<div class="selection">
