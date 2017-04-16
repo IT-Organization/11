@@ -47,7 +47,9 @@ public class HeadlineHelper
                     if (isRpt != null)
                         return false;
                     //添加新头条
-                    Passage pasInfo = db.Passage.SingleOrDefault(a => a.PassageId == hId);
+                    Passage pasInfo = db.Passage.SingleOrDefault(a => a.PassageId == hId && a.IsDel==false);
+                    if (pasInfo == null)
+                        return false;
                     Headline headSave = new Headline();
                     headSave.HId = hId;
                     headSave.Htitle = pasInfo.PassageTitle;

@@ -64,12 +64,12 @@ public partial class SetActiveHeadline : System.Web.UI.Page
             {
                 using(var db=new huxiuEntities())
                 {
-                    Activity act = db.Activity.SingleOrDefault(a => a.ActivityId == newID && a.IsHeadline == false);
+                    Activity act = db.Activity.SingleOrDefault(a => a.ActivityId == newID && a.IsHeadline == false && a.IsDel==false);
                     Activity actOld = db.Activity.SingleOrDefault(a => a.ActivityId == oldID);
 
                     if (act == null)                    //是否已经作为头条
                     {
-                        Response.Write("<script>alert('请检查 ID 或者已经添加！ ');location.href='SetActiveHeadline.aspx';</script>");
+                        Response.Write("<script>alert('请检查 ID 正确性！（不能重复添加和添加已经删除的条目） ');location.href='SetActiveHeadline.aspx';</script>");
                         return;
                     }
                     act.IsHeadline = true;
