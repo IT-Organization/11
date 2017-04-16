@@ -80,7 +80,7 @@ public partial class headline : System.Web.UI.Page
                     }
                     else
                     {
-                        Response.Write("<script>alert('添加失败，请检查数据的正确性！(不能重复添加)')</script>");
+                        Response.Write("<script>alert('添加失败，请检查数据的正确性！(不能重复添加,不能添加删除的条目)')</script>");
                         return;
                     }
                 }
